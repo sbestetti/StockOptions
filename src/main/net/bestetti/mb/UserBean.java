@@ -21,25 +21,27 @@ public class UserBean {
 	private List<User> users;
 	
 	public String add() {
+		showPasswordMessage = false;
+		showEmailMessage = false;
 		if (user.getPassword().equals(passwordCheck)) {
 			if (dao.add(user) == 0) {
-				user = new User();
 				return "/index.xhtml?faces-redirect=true";
-			} else if (dao.add(user) == 1) {
+			} else {
 				showEmailMessage = true;
-				return null;
+				return null;				
 			}
 		} else {
 			showPasswordMessage = true;
+			return null;
 		}
-		return null;
-	}
+	}			
 	
 	public List<User> getUsers() {
 		if (users == null) {
 			this.users = dao.getUsersOnly();
 		}
-		return users;
+		
+		return users;		
 	}
 	
 	//Getters & Setters
