@@ -35,6 +35,14 @@ public class UserBean {
 		return null;
 	}
 	
+	public List<User> getUsers() {
+		if (users == null) {
+			this.users = dao.getUsersOnly();
+		}
+		return users;
+	}
+	
+	//Getters & Setters
 	public boolean isShowPasswordMessage() {
 		return showPasswordMessage;
 	}
@@ -51,14 +59,6 @@ public class UserBean {
 		this.showEmailMessage = showEmailMessage;
 	}
 
-	public List<User> getUsers() {
-		if (users == null) {
-			this.users = dao.getUsersOnly();
-		}
-		return users;
-	}
-		
-	//Getters & Setters
 	public User getUser() {
 		return user;
 	}
