@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+	
+	<HEAD>
+		<TITLE>StockOptions - Add user</TITLE>
+	</HEAD>
+	
+	<h:body>
+		<h:form>
+			<table>
+				<TR>
+					<TD>First name</TD>
+					<TD>
+						<h:inputText value="#{userBean.user.firstName}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Last name</TD>
+					<TD>
+						<h:inputText value="#{userBean.user.lastName}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Email</TD>
+					<TD>
+						<h:inputText value="#{userBean.user.email}" />
+						<h:outputLabel value="Email already in use" rendered="#{userBean.showEmailMessage}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Password</TD>
+					<TD>
+						<h:inputSecret value="#{userBean.user.password}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Confirm password</TD>
+					<TD>
+						<h:inputSecret value="#{userBean.passwordCheck}" />
+						<h:outputLabel value="Password does not match" rendered="#{userBean.showPasswordMessage}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD />
+					<TD>
+						<h:commandButton value="Add user" action="#{userBean.add}" />
+					</TD>
+				</TR>				
+			</table>
+		</h:form>
+	</h:body>
+</html>

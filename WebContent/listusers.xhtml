@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+	  
+	<HEAD>
+		<TITLE>Welcome to StockOptions</TITLE>
+	</HEAD>
+	
+	<h:body>
+		
+		<h:dataTable value="#{userBean.users}" var="user" border="1">
+			<h:column>
+					<f:facet name="header">First name</f:facet>
+					#{user.firstName}
+			</h:column>
+			<h:column>
+					<f:facet name="header">Last name</f:facet>
+					#{user.lastName}
+			</h:column>
+			<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{user.email}
+			</h:column>
+			<h:column>
+					<f:facet name="header">Updated on</f:facet>
+					<h:outputText value="#{user.lastUpdate}">
+    					<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+					</h:outputText>					
+			</h:column>			
+		</h:dataTable>
+		
+		<h:link value="Return" outcome="/index.xhtml?faces-redirect=true" />
+		
+	</h:body>
+	
+</html>
