@@ -32,5 +32,9 @@ public class UserDao {
 		query.setParameter("email", user.getEmail());
 		return query.getResultList();
 	}
+	
+	public User getUserById (Long id) {
+		return em.find(User.class, id);
+	}
 
 }

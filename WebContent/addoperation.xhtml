@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+	
+	<HEAD>
+		<TITLE>StockOptions - Add user</TITLE>
+	</HEAD>
+	
+	<h:body>
+		<h:form>
+			<table>
+				<TR>
+					<TD>User ID</TD>
+					<TD>
+						<h:inputText value="#{operationBean.userId}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Type</TD>
+					<TD>
+						<h:inputText value="#{operationBean.operation.type}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Ticker</TD>
+					<TD>
+						<h:inputText value="#{operationBean.operation.ticker}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Volume</TD>
+					<TD>
+						<h:inputText value="#{operationBean.operation.amount}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD>Unit price</TD>
+					<TD>
+						<h:inputText value="#{operationBean.operation.unitPrice}" />
+					</TD>
+				</TR>
+				<TR>
+					<TD />
+					<TD>
+						<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
+					</TD>
+				</TR>					
+			</table>
+		</h:form>
+	</h:body>
+</html>

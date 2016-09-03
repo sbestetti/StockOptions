@@ -2,11 +2,13 @@ package main.net.bestetti.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -20,6 +22,8 @@ public class User {
 	private String password;
 	private Date lastUpdate = new Date();
 	private BigDecimal balance;
+	@OneToMany (mappedBy = "user")
+	private List<Operation> operations;
 	
 	//Getters & Setters
 	public Long getId() {
@@ -63,6 +67,12 @@ public class User {
 	}
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
+	}
+	public List<Operation> getOperations() {
+		return operations;
+	}
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}	
 
 }
