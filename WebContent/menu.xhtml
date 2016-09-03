@@ -5,6 +5,7 @@
 	
 	<h:body>
 		<h:form>
+			Logged user: #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.lastName} | #{loginBean.loggedUser.email}  
 			<table>
 				<tr>
 					<TD><h:commandLink value="Add user" action="/adduser.xhtml?faces-redirect=true" /></TD>
