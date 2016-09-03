@@ -33,8 +33,22 @@ public class UserDao {
 		return query.getResultList();
 	}
 	
+	public List<User> getUserByEmail (String email) {
+		User toCheck = new User();
+		toCheck.setEmail(email);
+		return this.getUserByEmail(toCheck);
+	}
+	
 	public User getUserById (Long id) {
 		return em.find(User.class, id);
+	}
+	
+	public boolean checkLogin(String email, String password) {
+		List<User> localList = this.getUserByEmail(email); 
+		if (!(localList.isEmpty()) && localList.get(0).getPassword().equals(password)) {
+			return true;
+		}
+		return false;
 	}
 
 }
