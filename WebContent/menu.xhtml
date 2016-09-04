@@ -5,7 +5,7 @@
 	
 	<h:body>
 		<h:form>
-			Logged user: #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.lastName} | <h:commandLink value="Logoff" action="#{loginBean.logoff}" />  
+			Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | <h:commandLink value="Logoff" action="#{loginBean.logoff}" />  
 			<table>
 				<tr>
 					<TD><h:commandLink value="Add user" action="/adduser.xhtml?faces-redirect=true" /></TD>

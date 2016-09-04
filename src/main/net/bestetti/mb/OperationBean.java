@@ -20,7 +20,7 @@ public class OperationBean {
 	private long userId;
 	
 	public void addOperation() {
-		operation.setUser(loginBean.getLoggedUser());
+		operation.setUser(loginBean.getUser());
 		calculator.addOperation(operation);
 		operation = new Operation();
 	}

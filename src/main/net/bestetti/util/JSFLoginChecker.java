@@ -1,11 +1,11 @@
 package main.net.bestetti.util;
 
-import javax.inject.Inject;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+import javax.inject.Inject;
 import main.net.bestetti.mb.LoginBean;
 
 public class JSFLoginChecker implements PhaseListener {

@@ -48,13 +48,16 @@ public class UserDao {
 		return em.find(User.class, id);
 	}
 	
-	public boolean loginOk (User user) {
+	public User userLogin (String email, String password) {
 		String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
-		query.setParameter("email", user.getEmail());
-		query.setParameter("password", user.getPassword());
-		List<User> results = query.getResultList();
-		return !results.isEmpty();
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

@@ -18,14 +18,13 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 	private boolean showErrorMessages = false;
-	private User user = new User();
-	private User loggedUser = new User();
-	private boolean logged;
+	private User user;
+	private boolean logged = false;
 	
 	public String login() {
-		if (dao.loginOk(user)) {
-			loggedUser = dao.getUserByEmail(user);
-			this.logged = true;
+		this.user = dao.userLogin(email, password);
+		if (user != null) {
+			logged = true;
 			return "menu?faces-redirect=true";
 		}
 		user = new User();
@@ -34,10 +33,9 @@ public class LoginBean implements Serializable {
 	}
 	
 	public String logoff() {
-		loggedUser = null;
+		this.user = new User();
 		logged = false;
-		return "/index.htmlx?faces-redirect=true";
-		
+		return "/index.htmlx?faces-redirect=true";		
 	}
 	
 	//Getters & Setters
@@ -62,14 +60,6 @@ public class LoginBean implements Serializable {
 		this.showErrorMessages = showErrorMessages;
 	}
 
-	public boolean isLogged() {
-		return logged;
-	}
-
-	public void setLogged(boolean logged) {
-		this.logged = logged;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -78,12 +68,12 @@ public class LoginBean implements Serializable {
 		this.user = user;
 	}
 
-	public User getLoggedUser() {
-		return loggedUser;
+	public boolean isLogged() {
+		return logged;
 	}
 
-	public void setLoggedUser(User loggedUser) {
-		this.loggedUser = loggedUser;
+	public void setLogged(boolean logged) {
+		this.logged = logged;
 	}
 
 }
