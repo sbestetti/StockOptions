@@ -1,14 +1,14 @@
 package main.net.bestetti.mb;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.User;
 
 @SessionScoped
-@ManagedBean
+@Named
 public class LoginBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -18,28 +18,26 @@ public class LoginBean implements Serializable {
 	private String email;
 	private String password;
 	private boolean showErrorMessages = false;
+	private User user = new User();
 	private User loggedUser = new User();
-	private boolean logged = false;
-	
-	public LoginBean() {
-		System.out.println("Login bean created");
-	}
+	private boolean logged;
 	
 	public String login() {
-		if (dao.checkLogin(email, password)) {
-			loggedUser = dao.getUserByEmail(email).get(0);
-			logged = true;
-			return "/menu.xhtml?faces-redirect=true";
+		if (dao.loginOk(user)) {
+			loggedUser = dao.getUserByEmail(user);
+			this.logged = true;
+			return "menu?faces-redirect=true";
 		}
+		user = new User();
 		showErrorMessages = true;
-		email = "";
-		password = "";
-		return null;
+		return null;			
 	}
 	
-	public boolean notLogged() {
-//		System.out.println("notLogged return: " + !loggedUser.getEmail().isEmpty());
-		return !loggedUser.getEmail().isEmpty();
+	public String logoff() {
+		loggedUser = null;
+		logged = false;
+		return "/index.htmlx?faces-redirect=true";
+		
 	}
 	
 	//Getters & Setters
@@ -64,21 +62,28 @@ public class LoginBean implements Serializable {
 		this.showErrorMessages = showErrorMessages;
 	}
 
+	public boolean isLogged() {
+		return logged;
+	}
+
+	public void setLogged(boolean logged) {
+		this.logged = logged;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public User getLoggedUser() {
 		return loggedUser;
 	}
 
 	public void setLoggedUser(User loggedUser) {
 		this.loggedUser = loggedUser;
-	}
-
-	public boolean isLogged() {
-		System.out.println("isLogged = " + logged);
-		return logged;
-	}
-
-	public void setLogged(boolean logged) {
-		this.logged = logged;
 	}
 
 }

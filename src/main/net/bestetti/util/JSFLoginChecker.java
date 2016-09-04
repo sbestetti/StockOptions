@@ -1,11 +1,11 @@
 package main.net.bestetti.util;
 
+import javax.inject.Inject;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.inject.Inject;
 import main.net.bestetti.mb.LoginBean;
 
 public class JSFLoginChecker implements PhaseListener {
@@ -13,8 +13,8 @@ public class JSFLoginChecker implements PhaseListener {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private LoginBean loginBean;
-
+	LoginBean loginBean;
+	
 	@Override
 	public void afterPhase(PhaseEvent arg0) {
 		
@@ -24,11 +24,12 @@ public class JSFLoginChecker implements PhaseListener {
 			return;
 		}
 		
-		if (loginBean.notLogged()) {
-			System.out.println("PhaseListener executed the notLogged block");
+		if (loginBean.isLogged()) {
+			return;
+		} else {
 			NavigationHandler handler = context.getApplication().getNavigationHandler();
 			handler.handleNavigation(context, null, "/index.xhtml?faces-redirect=true");
-			context.renderResponse();
+			context.renderResponse();			
 		}
 		
 	}

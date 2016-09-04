@@ -3,6 +3,7 @@ package main.net.bestetti.dao;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import main.net.bestetti.model.User;
@@ -14,7 +15,7 @@ public class UserDao {
 	private EntityManager em;
 	
 	public int add(User user) {
-		if (this.getUserByEmail(user).isEmpty()) {
+		if (this.getUserByEmail(user) == null) {
 			em.persist(user);
 			return 0;
 		}
@@ -26,14 +27,18 @@ public class UserDao {
 		return query.getResultList();
 	}
 	
-	public List<User> getUserByEmail(User user) {
+	public User getUserByEmail(User user) {
 		String jpql = "SELECT u FROM User u WHERE u.email = :email";
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
 		query.setParameter("email", user.getEmail());
-		return query.getResultList();
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}		
 	}
 	
-	public List<User> getUserByEmail (String email) {
+	public User getUserByEmail (String email) {
 		User toCheck = new User();
 		toCheck.setEmail(email);
 		return this.getUserByEmail(toCheck);
@@ -43,12 +48,13 @@ public class UserDao {
 		return em.find(User.class, id);
 	}
 	
-	public boolean checkLogin(String email, String password) {
-		List<User> localList = this.getUserByEmail(email); 
-		if (!(localList.isEmpty()) && localList.get(0).getPassword().equals(password)) {
-			return true;
-		}
-		return false;
+	public boolean loginOk (User user) {
+		String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("email", user.getEmail());
+		query.setParameter("password", user.getPassword());
+		List<User> results = query.getResultList();
+		return !results.isEmpty();
 	}
 
 }
