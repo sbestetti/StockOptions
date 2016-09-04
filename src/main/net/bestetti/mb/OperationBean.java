@@ -3,7 +3,6 @@ package main.net.bestetti.mb;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.User;
 import main.net.bestetti.util.OperationCalculator;
@@ -13,7 +12,7 @@ import main.net.bestetti.util.OperationCalculator;
 public class OperationBean {
 	
 	@Inject
-	private UserDao userDao;
+	private LoginBean loginBean;
 	@Inject
 	private OperationCalculator calculator;
 	private Operation operation = new Operation();
@@ -21,8 +20,7 @@ public class OperationBean {
 	private long userId;
 	
 	public void addOperation() {
-		user = userDao.getUserById(userId);
-		operation.setUser(user);
+		operation.setUser(loginBean.getLoggedUser());
 		calculator.addOperation(operation);
 		operation = new Operation();
 	}
