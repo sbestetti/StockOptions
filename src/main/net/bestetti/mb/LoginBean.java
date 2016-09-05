@@ -21,6 +21,10 @@ public class LoginBean implements Serializable {
 	private User user;
 	private boolean logged = false;
 	
+	public LoginBean() {
+		System.out.println("Bean created");
+	}
+	
 	public String login() {
 		this.user = dao.userLogin(email, password);
 		if (user != null) {

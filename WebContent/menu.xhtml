@@ -1,22 +1,27 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
 	<HEAD>
 		<TITLE>Welcome to StockOptions</TITLE>
 	</HEAD>
 	
-	<h:body>
-		<h:form>
-			Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | <h:commandLink value="Logoff" action="#{loginBean.logoff}" />  
-			<table>
-				<tr>
-					<TD><h:commandLink value="Add user" action="/adduser.xhtml?faces-redirect=true" /></TD>
-				</tr>
-				<tr>
-					<TD><h:commandLink value="List Users" action="/listusers.xhtml?faces-redirect=true" /></TD>
-				</tr>
-				<tr>
-					<TD><h:commandLink value="Add operations" action="/addoperation.xhtml?faces-redirect=true" /></TD>
-				</tr>
-			</table>
-		</h:form>
-	</h:body>
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<table>
+					<tr>
+						<TD><h:commandLink value="Add user" action="/adduser.xhtml?faces-redirect=true" /></TD>
+					</tr>
+					<tr>
+						<TD><h:commandLink value="List Users" action="/listusers.xhtml?faces-redirect=true" /></TD>
+					</tr>
+					<tr>
+						<TD><h:commandLink value="Add operations" action="/addoperation.xhtml?faces-redirect=true" /></TD>
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>		
+	</ui:composition>
+		
 </html>

@@ -3,8 +3,9 @@ package main.net.bestetti.mb;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
-import main.net.bestetti.model.User;
+import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
 
 @ManagedBean
@@ -14,35 +15,47 @@ public class OperationBean {
 	@Inject
 	private LoginBean loginBean;
 	@Inject
-	private OperationCalculator calculator;
-	private Operation operation = new Operation();
-	private User user = new User();
-	private long userId;
-	
+	private OperationDao dao;
+	private OperationCalculator calculator = new OperationCalculator();
+	private Operation op = new Operation();
+	private OperationCost oc = new OperationCost();
+	private boolean showConfirmation = false;
+		
 	public void addOperation() {
-		operation.setUser(loginBean.getUser());
-		calculator.addOperation(operation);
-		operation = new Operation();
+		op.setUser(loginBean.getUser());
+		op = calculator.calculateOperationTotal(op);
+		oc = calculator.getFinalOC();
+		showConfirmation = true;
+	}
+	
+	public String confirmAdding() {
+		dao.add(op, oc);
+		return "/menu.xhtml?faces-redirect=true";
+	}
+	
+	public String cancel() {
+		return "/menu.xhtml?faces-redirect=true";
 	}
 	
 	//Getters & Setters
-	public Operation getOperation() {
-		return operation;
+	public boolean isShowConfirmation() {
+		return showConfirmation;
 	}
-	public void setOperation(Operation operation) {
-		this.operation = operation;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId(long userId) {
-		this.userId = userId;
+	
+	public Operation getOp() {
+		return op;
 	}
 
+	public void setOp(Operation op) {
+		this.op = op;
+	}
+
+	public OperationCost getOc() {
+		return oc;
+	}
+
+	public void setOc(OperationCost oc) {
+		this.oc = oc;
+	}
+	
 }

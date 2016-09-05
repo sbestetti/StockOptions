@@ -15,6 +15,8 @@ public class OperationDao {
 	
 	public void add (Operation op, OperationCost oc) {
 		op.setCreated(new Date());
+		oc.setOperation(op);
+		op.setOc(oc);
 		em.persist(op);
 		em.persist(oc);
 	}

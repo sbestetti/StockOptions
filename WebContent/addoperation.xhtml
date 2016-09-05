@@ -1,43 +1,104 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core">
 	
 	<HEAD>
 		<TITLE>StockOptions - Add user</TITLE>
 	</HEAD>
-	
-	<h:body>
-		<h:form>
-			<table>
-				<TR>
-					<TD>Type</TD>
-					<TD>
-						<h:inputText value="#{operationBean.operation.type}" />
-					</TD>
-				</TR>
-				<TR>
-					<TD>Ticker</TD>
-					<TD>
-						<h:inputText value="#{operationBean.operation.ticker}" />
-					</TD>
-				</TR>
-				<TR>
-					<TD>Volume</TD>
-					<TD>
-						<h:inputText value="#{operationBean.operation.amount}" />
-					</TD>
-				</TR>
-				<TR>
-					<TD>Unit price</TD>
-					<TD>
-						<h:inputText value="#{operationBean.operation.unitPrice}" />
-					</TD>
-				</TR>
-				<TR>
-					<TD />
-					<TD>
-						<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
-					</TD>
-				</TR>					
-			</table>
-		</h:form>
-	</h:body>
+
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<table>
+					<TR>
+						<TD>Type</TD>
+						<TD>
+							<h:selectOneMenu value="#{operationBean.op.type}">
+								<f:selectItem itemValue="BUY" itemLabel="Buy" />
+								<f:selectItem itemValue="SELL" itemLabel="Sell" />
+								<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit" />
+								<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl" />
+							</h:selectOneMenu>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Ticker</TD>
+						<TD>
+							<h:inputText value="#{operationBean.op.ticker}" />
+						</TD>
+					</TR>
+					<TR>
+						<TD>Volume</TD>
+						<TD>
+							<h:inputText value="#{operationBean.op.amount}" />
+						</TD>
+					</TR>
+						<TR>
+						<TD>Unit price</TD>
+						<TD>
+							<h:inputText value="#{operationBean.op.unitPrice}" />
+						</TD>
+					</TR>
+					<TR>
+						<TD />
+						<TD>
+							<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
+						</TD>
+					</TR>					
+				</table>
+			</h:form>
+			<h:form rendered="#{operationBean.showConfirmation}">
+				<hr />
+				Please confirm:<br />
+				<TABLE>
+					<TR>
+						<TD>Total asset costs/income</TD>
+						<TD>
+							<h:inputText value="#{operationBean.op.total}">
+								<f:convertNumber type="currency" />
+							</h:inputText>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Tax</TD>
+						<TD>
+							<h:inputText value="#{operationBean.oc.tax}">
+								<f:convertNumber type="currency" />
+							</h:inputText>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Broker fee</TD>
+						<TD>
+							<h:inputText value="#{operationBean.oc.fee}">
+								<f:convertNumber type="currency" />
+							</h:inputText>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Maintenance costs</TD>
+						<TD>
+							<h:inputText value="#{operationBean.oc.maintenance}">
+								<f:convertNumber type="currency" />
+							</h:inputText>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Total operation value</TD>
+						<TD>
+							<h:inputText value="#{operationBean.op.totalPlusCosts}">
+								<f:convertNumber type="currency" />
+							</h:inputText>
+						</TD>
+					</TR>
+					<TR>
+						<TD />
+						<TD><h:commandButton value="Confirm" action="#{operationBean.confirmAdding}" /></TD>
+						<TD><h:commandLink value="Cancel" action="#{operationBean.cancel}" /></TD>
+					</TR>
+				</TABLE>
+			</h:form>
+		</ui:define>
+	</ui:composition>	
 </html>

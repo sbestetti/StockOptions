@@ -1,0 +1,27 @@
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"													
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<HEAD>
+		<TITLE>StockOptions On-line book</TITLE>
+		<h:outputStylesheet library="css" name="/resources/css/_template.css" />
+	</HEAD>
+	
+	<h:body>
+		<div id="header">
+			<DIV id="loggedUser">
+				<h:form>
+					Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | 
+					<h:commandLink value="Logoff" action="#{loginBean.logoff}" />
+				</h:form>
+			</DIV>			
+		</div>
+		<DIV id="body">
+			<ui:insert name="content" />
+		</DIV>
+		<DIV id="footer">
+			Copyright 2016 - All rights reserved Sergio Bestetti		
+		</DIV>
+	</h:body>
+</html>
