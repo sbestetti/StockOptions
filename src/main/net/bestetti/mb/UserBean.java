@@ -1,13 +1,15 @@
 package main.net.bestetti.mb;
 
 import java.util.List;
-import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+
 import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.User;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class UserBean {
 	

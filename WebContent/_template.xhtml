@@ -13,6 +13,9 @@
 			<DIV id="loggedUser">
 				<h:form>
 					Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | 
+					Current balance: <h:outputLabel value="#{loginBean.balance}">
+									 	<f:convertNumber type="currency" />
+									 </h:outputLabel> | 
 					<h:commandLink value="Logoff" action="#{loginBean.logoff}" />
 				</h:form>
 			</DIV>			

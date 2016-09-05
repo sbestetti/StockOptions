@@ -1,27 +1,32 @@
 package main.net.bestetti.mb;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
 
-@ManagedBean
-@ViewScoped
+@Named
 public class OperationBean {
 	
 	@Inject
 	private LoginBean loginBean;
 	@Inject
 	private OperationDao dao;
-	private OperationCalculator calculator = new OperationCalculator();
+	@Inject
+	private OperationCalculator calculator;
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
 	private boolean showConfirmation = false;
+	
+	public OperationBean() {
+		System.out.println("OperationBean created");
+	}
 		
 	public void addOperation() {
+		System.out.println("OperationBean's addOperation method called");
 		op.setUser(loginBean.getUser());
 		op = calculator.calculateOperationTotal(op);
 		oc = calculator.getFinalOC();
@@ -30,6 +35,7 @@ public class OperationBean {
 	
 	public String confirmAdding() {
 		dao.add(op, oc);
+		loginBean.updateUserBalance();
 		return "/menu.xhtml?faces-redirect=true";
 	}
 	

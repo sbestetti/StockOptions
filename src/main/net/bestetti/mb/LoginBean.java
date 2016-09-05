@@ -1,11 +1,15 @@
 package main.net.bestetti.mb;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.User;
+import main.net.bestetti.util.OperationCalculator;
 
 @SessionScoped
 @Named
@@ -15,20 +19,27 @@ public class LoginBean implements Serializable {
 	
 	@Inject
 	private UserDao dao;
+	
+	@Inject
+	private OperationCalculator calculator;
+	
 	private String email;
 	private String password;
 	private boolean showErrorMessages = false;
 	private User user;
 	private boolean logged = false;
+	private BigDecimal balance = BigDecimal.ZERO;
 	
 	public LoginBean() {
-		System.out.println("Bean created");
+		System.out.println("LoginBean created");
 	}
 	
 	public String login() {
+		System.out.println("loginBean.login method called");
 		this.user = dao.userLogin(email, password);
 		if (user != null) {
 			logged = true;
+			this.updateUserBalance();
 			return "menu?faces-redirect=true";
 		}
 		user = new User();
@@ -40,6 +51,10 @@ public class LoginBean implements Serializable {
 		this.user = new User();
 		logged = false;
 		return "/index.htmlx?faces-redirect=true";		
+	}
+	
+	public void updateUserBalance() {
+		this.balance = calculator.getUserBalance(user);
 	}
 	
 	//Getters & Setters
@@ -78,6 +93,14 @@ public class LoginBean implements Serializable {
 
 	public void setLogged(boolean logged) {
 		this.logged = logged;
+	}
+
+	public BigDecimal getBalance() {
+		return balance;
+	}
+
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
 	}
 
 }

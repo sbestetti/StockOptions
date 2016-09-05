@@ -1,18 +1,27 @@
 package main.net.bestetti.dao;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.ejb.Stateless;
+
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import main.net.bestetti.model.User;
 
-@Stateless
-public class UserDao {
+@Named
+public class UserDao implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext
 	private EntityManager em;
+	
+	public UserDao() {
+		System.out.println("UserDao created");
+	}
 	
 	public int add(User user) {
 		if (this.getUserByEmail(user) == null) {
@@ -49,6 +58,7 @@ public class UserDao {
 	}
 	
 	public User userLogin (String email, String password) {
+		System.out.println("UserDao's userLogin method called");
 		String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
 		query.setParameter("email", email);
