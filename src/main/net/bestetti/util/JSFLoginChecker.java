@@ -6,14 +6,15 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.inject.Inject;
-import main.net.bestetti.mb.LoginBean;
+
+import main.net.bestetti.mb.LoggedUserBean;
 
 public class JSFLoginChecker implements PhaseListener {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	LoginBean loginBean;
+	LoggedUserBean loggedUserBean;
 	
 	@Override
 	public void afterPhase(PhaseEvent arg0) {
@@ -24,7 +25,7 @@ public class JSFLoginChecker implements PhaseListener {
 			return;
 		}
 		
-		if (loginBean.isLogged()) {
+		if (loggedUserBean.isLogged()) {
 			return;
 		} else {
 			NavigationHandler handler = context.getApplication().getNavigationHandler();

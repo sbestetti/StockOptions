@@ -12,11 +12,11 @@
 		<div id="header">
 			<DIV id="loggedUser">
 				<h:form>
-					Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | 
-					Current balance: <h:outputLabel value="#{loginBean.balance}">
+					Logged user: #{loggedUserBean.loggedUser.firstName} #{loggedUserBean.loggedUser.lastName} | 
+					Current balance: <h:outputLabel value="#{balanceBean.balance}">
 									 	<f:convertNumber type="currency" />
 									 </h:outputLabel> | 
-					<h:commandLink value="Logoff" action="#{loginBean.logoff}" />
+					<h:commandLink value="NADA" />
 				</h:form>
 			</DIV>			
 		</div>

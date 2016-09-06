@@ -3,6 +3,7 @@ package main.net.bestetti.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -19,8 +20,9 @@ public class UserDao implements Serializable{
 	@PersistenceContext
 	private EntityManager em;
 	
-	public UserDao() {
-		System.out.println("UserDao created");
+	@PostConstruct
+	public void notice() {
+		System.out.println("UserDao: " + this.toString());
 	}
 	
 	public int add(User user) {
@@ -63,6 +65,18 @@ public class UserDao implements Serializable{
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	public User login(User user) {
+		String  jpql = "SELECT u FROM User u WHERE u.email = :pEmail AND u.password = :pPassword";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("pEmail", user.getEmail());
+		query.setParameter("pPassword", user.getPassword());
 		try {
 			return query.getSingleResult();
 		} catch (NoResultException e) {
