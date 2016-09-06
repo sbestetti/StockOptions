@@ -1,46 +1,53 @@
 package main.net.bestetti.mb;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
 
-@RequestScoped
 @Named
 public class OperationBean {
 	
 	@Inject
-	private LoggedUserBean loggedUserBean;
-	
+	private LoginBean loginBean;
+	@Inject
+	private OperationDao dao;
 	@Inject
 	private OperationCalculator calculator;
-	
-	@Inject
-	private OperationConfirmation confirmationBean;
-	
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
 	private boolean showConfirmation = false;
 	
-	@PostConstruct
-	public void notice() {
-		System.out.println("OperationBean: " + this.toString());
+	public OperationBean() {
+		System.out.println("OperationBean created");
+	}
+		
+	public void addOperation() {
+		System.out.println("OperationBean's addOperation method called");
+		op.setUser(loginBean.getUser());
+		op = calculator.calculateOperationTotal(op);
+		oc = calculator.getFinalOC();
+		showConfirmation = true;
 	}
 	
-	public String addOperation() {
-		op.setUser(loggedUserBean.getLoggedUser());
-		op = calculator.calculateOperationTotal(op);
-		oc = calculator.calculateOperationCosts(op);
-		confirmationBean.setOp(op);
-		confirmationBean.setOc(oc);
-		confirmationBean.setUser(op.getUser());
-		return "/operationconfirmation.xhtml";
+	public String confirmAdding() {
+		dao.add(op, oc);
+		loginBean.updateUserBalance();
+		return "/menu.xhtml?faces-redirect=true";
 	}
-
+	
+	public String cancel() {
+		return "/menu.xhtml?faces-redirect=true";
+	}
+	
 	//Getters & Setters
+	public boolean isShowConfirmation() {
+		return showConfirmation;
+	}
+	
 	public Operation getOp() {
 		return op;
 	}
@@ -49,20 +56,12 @@ public class OperationBean {
 		this.op = op;
 	}
 
-	public boolean isShowConfirmation() {
-		return showConfirmation;
-	}
-
-	public void setShowConfirmation(boolean showConfirmation) {
-		this.showConfirmation = showConfirmation;
-	}
-
 	public OperationCost getOc() {
 		return oc;
 	}
 
 	public void setOc(OperationCost oc) {
 		this.oc = oc;
-	}	
+	}
 	
 }

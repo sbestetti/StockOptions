@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,11 +21,6 @@ public class OperationDao implements Serializable{
 	
 	@PersistenceContext
 	private EntityManager em;
-	
-	@PostConstruct
-	public void notice() {
-		System.out.println("OperationDao: " + this.toString());
-	}
 	
 	public OperationDao() {
 		System.out.println("OperationDao created");

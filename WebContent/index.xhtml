@@ -8,13 +8,13 @@
 			<table>
 				<tr>
 					<TD><h:outputLabel value="Email" /></TD>
-					<TD><h:inputText value="#{loginBean.user.email}" /></TD>
+					<TD><h:inputText value="#{loginBean.email}" /></TD>
 				</tr>
 				<tr>
 					<TD><h:outputLabel value="Password" /></TD>
 					<TD>
-						<h:inputSecret value="#{loginBean.user.password}" />
-						<h:outputLabel value="Email or Password inccorect" rendered="false"/>
+						<h:inputSecret value="#{loginBean.password}" />
+						<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"/>
 					</TD>
 				</tr>
 				<tr>
@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<TD />
-					<TD><h:commandLink value="Reset password" rendered="false"/></TD>
+					<TD><h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"/></TD>
 				</tr>
 			</table>
 		</h:form>

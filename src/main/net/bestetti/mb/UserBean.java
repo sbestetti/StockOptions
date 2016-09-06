@@ -2,7 +2,6 @@ package main.net.bestetti.mb;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,11 +21,6 @@ public class UserBean {
 	private boolean showPasswordMessage = false;
 	private boolean showEmailMessage = false;
 	private List<User> users;
-	
-	@PostConstruct
-	public void notice() {
-		System.out.println("UserBean: " + this.toString());
-	}
 	
 	public String add() {
 		showPasswordMessage = false;

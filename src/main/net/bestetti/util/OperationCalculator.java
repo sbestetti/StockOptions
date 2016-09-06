@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,7 +13,6 @@ import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.model.User;
 
 @Named
-@RequestScoped
 public class OperationCalculator implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
