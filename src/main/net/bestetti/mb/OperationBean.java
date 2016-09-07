@@ -1,32 +1,39 @@
 package main.net.bestetti.mb;
 
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
 
-@Named
-public class OperationBean {
+@Named @SessionScoped
+public class OperationBean implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private LoginBean loginBean;
+	
 	@Inject
 	private OperationDao dao;
+	
 	@Inject
 	private OperationCalculator calculator;
+	
+	private boolean showConfirmation = false;
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
-	private boolean showConfirmation = false;
-	
-	public OperationBean() {
-		System.out.println("OperationBean created");
+		
+	public void cleanBean () {
+		this.oc = new OperationCost();
+		this.op = new Operation();
+		this.showConfirmation = false;
 	}
 		
 	public void addOperation() {
-		System.out.println("OperationBean's addOperation method called");
 		op.setUser(loginBean.getUser());
 		op = calculator.calculateOperationTotal(op);
 		oc = calculator.getFinalOC();
@@ -35,7 +42,7 @@ public class OperationBean {
 	
 	public String confirmAdding() {
 		dao.add(op, oc);
-		loginBean.updateUserBalance();
+		loginBean.setBalance(calculator.getUserBalance(loginBean.getUser()));
 		return "/menu.xhtml?faces-redirect=true";
 	}
 	

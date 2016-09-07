@@ -15,13 +15,17 @@ public class User {
 	
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String firstName;
 	private String lastName;
+	
 	@Column (unique = true)
 	private String email;
+	
 	private String password;
 	private Date lastUpdate = new Date();
 	private BigDecimal balance;
+	
 	@OneToMany (mappedBy = "user")
 	private List<Operation> operations;
 	

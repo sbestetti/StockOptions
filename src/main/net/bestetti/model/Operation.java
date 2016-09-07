@@ -15,10 +15,13 @@ public class Operation {
 	
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@ManyToOne
 	private User user;
+	
 	@OneToOne (fetch = FetchType.EAGER)
 	private OperationCost oc;
+	
 	private String type;
 	private String ticker;
 	private int amount;

@@ -13,8 +13,10 @@ public class OperationCost {
 	
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@OneToOne (fetch = FetchType.EAGER)
 	private Operation operation;
+	
 	private BigDecimal tax;
 	private BigDecimal fee;
 	private BigDecimal maintenance;

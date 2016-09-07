@@ -3,31 +3,29 @@ package main.net.bestetti.util;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.model.User;
 
-@Named
+@Named @RequestScoped
 public class OperationCalculator implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	OperationDao dao;
+	private OperationDao dao;
+	
 	private static double tax = 0.15;
 	private static double fee = 0.03;
 	private static double maintenance = 0.0325;
 	private OperationCost finalOC = new OperationCost();
 	
-	public OperationCalculator() {
-		System.out.println("OperationCalculator created");
-	}
 	
+	//This method returns the Operation itself but with all it's fields calculated
 	public Operation calculateOperationTotal (Operation op) {
 		if (op.getType().equals("BUY")) {
 			op.setTotal(op.getUnitPrice().multiply(new BigDecimal(op.getAmount())));
@@ -38,6 +36,7 @@ public class OperationCalculator implements Serializable{
 			OperationCost oc = this.calculateOperationCosts(op);
 			op.setTotalPlusCosts(op.getTotal().subtract(oc.getFee().add(oc.getMaintenance().add(oc.getTax()))));
 		} else {
+			op.setAmount(1);
 			op.setTotal(op.getUnitPrice());
 			OperationCost oc = this.calculateOperationCosts(op);
 			op.setTotalPlusCosts(op.getTotal());
@@ -45,6 +44,7 @@ public class OperationCalculator implements Serializable{
 		return op;
 	}
 	
+	//This method creates and calculates an OperationCosts object for the given Operation
 	public OperationCost calculateOperationCosts (Operation op) {
 		
 		OperationCost oc = new OperationCost();
@@ -71,12 +71,12 @@ public class OperationCalculator implements Serializable{
 		return oc;
 	}
 	
+	//For security reasons the User's balance is never stored but is re-calculated by this method every time it changes 
 	public BigDecimal getUserBalance(User user) {
 		BigDecimal result = BigDecimal.ZERO;
 		List<Operation> operations = dao.getOperationsByUser(user);
 		for (Operation each : operations) {
-			String type = each.getType();
-			if (type.equals("BUY") || type.equals("WITHDRAWL")) {
+			if (each.getType().equals("BUY") || each.getType().equals("WITHDRAWL")) {
 				result = result.subtract(each.getTotalPlusCosts());
 			} else {
 				result = result.add(each.getTotalPlusCosts());

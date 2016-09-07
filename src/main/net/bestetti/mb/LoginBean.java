@@ -2,44 +2,36 @@ package main.net.bestetti.mb;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.User;
 import main.net.bestetti.util.OperationCalculator;
 
-@SessionScoped
-@Named
+@Named @SessionScoped
 public class LoginBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private UserDao dao;
-	
-	@Inject
 	private OperationCalculator calculator;
 	
+	@Inject
+	UserDao dao;
+	
+	private boolean showErrorMessages = false;
+	private boolean logged = false;
 	private String email;
 	private String password;
-	private boolean showErrorMessages = false;
-	private User user;
-	private boolean logged = false;
 	private BigDecimal balance = BigDecimal.ZERO;
-	
-	public LoginBean() {
-		System.out.println("LoginBean created");
-	}
+	private User user;	
 	
 	public String login() {
-		System.out.println("loginBean.login method called");
 		this.user = dao.userLogin(email, password);
 		if (user != null) {
 			logged = true;
-			this.updateUserBalance();
+			this.balance = calculator.getUserBalance(user);
 			return "menu?faces-redirect=true";
 		}
 		user = new User();
