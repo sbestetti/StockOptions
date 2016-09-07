@@ -9,17 +9,14 @@
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
 			<h:form>
-				<table>
-					<tr>
-						<TD><h:commandLink value="Add user" action="/adduser.xhtml?faces-redirect=true" /></TD>
-					</tr>
-					<tr>
-						<TD><h:commandLink value="List Users" action="/listusers.xhtml?faces-redirect=true" /></TD>
-					</tr>
-					<tr>
-						<TD><h:commandLink value="Add operations" action="#{menuBean.addOperation}" /></TD>
-					</tr>
-				</table>
+				<ul>
+					<li> Operations
+						<ul>
+							<li><h:commandLink value="Add new" action="#{menuBean.addOperation}" /></li>
+							<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>							
+						</ul>
+					</li>
+				</ul>
 			</h:form>
 		</ui:define>		
 	</ui:composition>

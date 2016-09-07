@@ -1,6 +1,8 @@
 package main.net.bestetti.mb;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -26,7 +28,13 @@ public class OperationBean implements Serializable{
 	private boolean showConfirmation = false;
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
+	private List<Operation> operations;
 		
+	public List<Operation> getOperations() {
+		operations = dao.getOperationsByUser(loginBean.getUser());
+		return operations;
+	}
+
 	public void cleanBean () {
 		this.oc = new OperationCost();
 		this.op = new Operation();
