@@ -16,14 +16,17 @@
 					<TR>
 						<TD>Type</TD>
 						<TD>
-							<h:selectOneMenu id="combo" value="#{operationBean.op.type}">
-								<f:selectItem itemValue="BUY" itemLabel="Buy" />
-								<f:selectItem itemValue="SELL" itemLabel="Sell" />
+							<h:selectOneMenu id="combo" required="true" value="#{operationBean.op.type}" 
+							requiredMessage=" - Please select an operation type">
+								<f:selectItem itemValue="#{null}" itemLabel="-SELECT-" noSelectionOption="true"/>
 								<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit" />
 								<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl" />
+								<f:selectItem itemValue="BUY" itemLabel="Buy" />
+								<f:selectItem itemValue="SELL" itemLabel="Sell" />
 								<f:ajax event="change" execute="combo" render="ticker volume" />
 							</h:selectOneMenu>
 						</TD>
+						<TD><h:message for="combo" /></TD>
 					</TR>
 					<TR>
 						<TD>Ticker</TD>
@@ -32,8 +35,8 @@
 							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 							required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
 							requiredMessage=" - Please type the Stock/Option code" />
-							<h:message for="ticker" />
 						</TD>
+						<TD><h:message for="ticker" /></TD>
 					</TR>
 					<TR>
 						<TD>Volume</TD>
@@ -42,23 +45,27 @@
 							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 							required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
 							requiredMessage=" - Please input the amount of assets"/>
-							<h:message for="volume" />
 						</TD>
+						<TD><h:message for="volume" /></TD>
 					</TR>
 						<TR>
 						<TD>Unit price</TD>
 						<TD>
 							<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
 							requiredMessage=" - Price is mandatory" />
-							<h:message for="price" />
 						</TD>
+						<TD><h:message for="price" /></TD>
 					</TR>
 					<TR>
 						<TD />
 						<TD>
 							<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
 						</TD>
-						<TD><h:commandLink value="Cancel" action="#{operationBean.cancel}" /></TD>
+						<TD>
+							<h:commandLink value="Cancel" action="#{operationBean.cancel}">
+								<f:ajax />
+							</h:commandLink>
+						</TD>
 					</TR>					
 				</table>
 			</h:form>
