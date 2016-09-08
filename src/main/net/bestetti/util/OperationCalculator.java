@@ -35,12 +35,19 @@ public class OperationCalculator implements Serializable{
 			op.setTotal(op.getUnitPrice().multiply(new BigDecimal(op.getAmount())));
 			OperationCost oc = this.calculateOperationCosts(op);
 			op.setTotalPlusCosts(op.getTotal().subtract(oc.getFee().add(oc.getMaintenance().add(oc.getTax()))));
-		} else {
+		} else if (op.getType().equals("DEPOSIT")) {
+			op.setTicker("DEPOSIT");
 			op.setAmount(1);
 			op.setTotal(op.getUnitPrice());
 			OperationCost oc = this.calculateOperationCosts(op);
 			op.setTotalPlusCosts(op.getTotal());
-		}		
+		} else if (op.getType().equals("WITHDRAWL")) {
+			op.setTicker("WITHDRAWL");
+			op.setAmount(1);
+			op.setTotal(op.getUnitPrice());
+			OperationCost oc = this.calculateOperationCosts(op);
+			op.setTotalPlusCosts(op.getTotal());
+		}	
 		return op;
 	}
 	

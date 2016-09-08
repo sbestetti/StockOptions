@@ -24,7 +24,7 @@ public class Operation {
 	
 	private String type;
 	private String ticker;
-	private int amount;
+	private Integer amount;
 	private BigDecimal unitPrice;
 	private BigDecimal total;
 	private BigDecimal totalPlusCosts;
@@ -55,10 +55,10 @@ public class Operation {
 	public void setTicker(String ticker) {
 		this.ticker = ticker.toUpperCase();
 	}
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	public BigDecimal getUnitPrice() {

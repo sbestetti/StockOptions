@@ -29,6 +29,7 @@ public class OperationBean implements Serializable{
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
 	private List<Operation> operations;
+	private boolean tickerEnabled = true;
 		
 	public List<Operation> getOperations() {
 		operations = dao.getOperationsByUser(loginBean.getUser());
@@ -77,6 +78,14 @@ public class OperationBean implements Serializable{
 
 	public void setOc(OperationCost oc) {
 		this.oc = oc;
+	}
+
+	public boolean isTickerEnabled() {
+		return tickerEnabled;
+	}
+
+	public void setTickerEnabled(boolean tickerEnabled) {
+		this.tickerEnabled = tickerEnabled;
 	}
 	
 }

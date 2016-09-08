@@ -16,30 +16,41 @@
 					<TR>
 						<TD>Type</TD>
 						<TD>
-							<h:selectOneMenu value="#{operationBean.op.type}">
+							<h:selectOneMenu id="combo" value="#{operationBean.op.type}">
 								<f:selectItem itemValue="BUY" itemLabel="Buy" />
 								<f:selectItem itemValue="SELL" itemLabel="Sell" />
 								<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit" />
 								<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl" />
+								<f:ajax event="change" execute="combo" render="ticker volume" />
 							</h:selectOneMenu>
 						</TD>
 					</TR>
 					<TR>
 						<TD>Ticker</TD>
 						<TD>
-							<h:inputText value="#{operationBean.op.ticker}" />
+							<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
+							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
+							required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
+							requiredMessage=" - Please type the Stock/Option code" />
+							<h:message for="ticker" />
 						</TD>
 					</TR>
 					<TR>
 						<TD>Volume</TD>
 						<TD>
-							<h:inputText value="#{operationBean.op.amount}" />
+							<h:inputText id="volume" value="#{operationBean.op.amount}" 
+							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
+							required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
+							requiredMessage=" - Please input the amount of assets"/>
+							<h:message for="volume" />
 						</TD>
 					</TR>
 						<TR>
 						<TD>Unit price</TD>
 						<TD>
-							<h:inputText value="#{operationBean.op.unitPrice}" />
+							<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
+							requiredMessage=" - Price is mandatory" />
+							<h:message for="price" />
 						</TD>
 					</TR>
 					<TR>
@@ -47,6 +58,7 @@
 						<TD>
 							<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
 						</TD>
+						<TD><h:commandLink value="Cancel" action="#{operationBean.cancel}" /></TD>
 					</TR>					
 				</table>
 			</h:form>
