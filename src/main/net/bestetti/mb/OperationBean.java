@@ -1,11 +1,17 @@
 package main.net.bestetti.mb;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
@@ -57,6 +63,21 @@ public class OperationBean implements Serializable{
 	
 	public String cancel() {
 		return "/menu.xhtml?faces-redirect=true";
+	}
+	
+	//Validators
+	public void volumeValidator(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
+		BigDecimal valueToCheck = new BigDecimal(value.toString());
+		if (valueToCheck.compareTo(BigDecimal.ONE) == -1) {
+			throw new ValidatorException(new FacesMessage("Must be at least 0.01"));			
+		}	
+	}
+	
+	public void priceValidator(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
+		BigDecimal valueToCheck = new BigDecimal(value.toString());
+		if (valueToCheck.compareTo(BigDecimal.ZERO) == -1 || valueToCheck.compareTo(BigDecimal.ZERO) == 0) {
+			throw new ValidatorException(new FacesMessage("Must be at least 0.01"));			
+		}		
 	}
 	
 	//Getters & Setters

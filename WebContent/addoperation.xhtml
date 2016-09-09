@@ -44,7 +44,8 @@
 							<h:inputText id="volume" value="#{operationBean.op.amount}" 
 							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 							required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
-							requiredMessage=" - Please input the amount of assets"/>
+							requiredMessage=" - Please input the amount of assets"
+							validator="#{operationBean.volumeValidator}"/>
 						</TD>
 						<TD><h:message for="volume" /></TD>
 					</TR>
@@ -52,7 +53,8 @@
 						<TD>Unit price</TD>
 						<TD>
 							<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
-							requiredMessage=" - Price is mandatory" />
+							requiredMessage=" - Price is mandatory"
+							validator="#{operationBean.priceValidator}" />
 						</TD>
 						<TD><h:message for="price" /></TD>
 					</TR>
