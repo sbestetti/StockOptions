@@ -20,8 +20,8 @@ public class OperationCalculator implements Serializable{
 	private OperationDao dao;
 	
 	private static double tax = 0.15;
-	private static double fee = 0.03;
-	private static double maintenance = 0.0325;
+	private static double fee = 0.003;
+	private static double maintenance = 0.000325;
 	private OperationCost finalOC = new OperationCost();
 	
 	
