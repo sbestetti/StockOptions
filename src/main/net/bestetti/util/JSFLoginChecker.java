@@ -20,7 +20,7 @@ public class JSFLoginChecker implements PhaseListener {
 		
 		FacesContext context = arg0.getFacesContext();
 		
-		if ("/index.xhtml".equals(context.getViewRoot().getViewId())) {
+		if ("/index.xhtml".equals(context.getViewRoot().getViewId()) || "/adduser.xhtml".equals(context.getViewRoot().getViewId())) {
 			return;
 		}
 		

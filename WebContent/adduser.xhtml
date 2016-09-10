@@ -12,39 +12,44 @@
 				<TR>
 					<TD>First name</TD>
 					<TD>
-						<h:inputText value="#{userBean.user.firstName}" />
+						<h:inputText value="#{addUserBean.user.firstName}"
+						rendered="true"  requiredMessage="Name required"/>
 					</TD>
 				</TR>
 				<TR>
 					<TD>Last name</TD>
 					<TD>
-						<h:inputText value="#{userBean.user.lastName}" />
+						<h:inputText value="#{addUserBean.user.lastName}" 
+						required="true" requiredMessage="Last name required"/>
 					</TD>
 				</TR>
 				<TR>
 					<TD>Email</TD>
 					<TD>
-						<h:inputText value="#{userBean.user.email}" />
-						<h:outputLabel value="Email already in use" rendered="#{userBean.showEmailMessage}" />
+						<h:inputText value="#{addUserBean.user.email}"
+						required="true" requiredMessage="Email required" />
+						<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}" />
 					</TD>
 				</TR>
 				<TR>
 					<TD>Password</TD>
 					<TD>
-						<h:inputSecret value="#{userBean.user.password}" />
+						<h:inputSecret value="#{addUserBean.user.password}" 
+						required="true" requiredMessage="Password required"/>
 					</TD>
 				</TR>
 				<TR>
 					<TD>Confirm password</TD>
 					<TD>
-						<h:inputSecret value="#{userBean.passwordCheck}" />
-						<h:outputLabel value="Password does not match" rendered="#{userBean.showPasswordMessage}" />
+						<h:inputSecret value="#{addUserBean.passwordCheck}"
+						required="true" requiredMessage="Password check required"/>
+						<h:outputLabel value="Password does not match" rendered="#{addUserBean.passwordMismatchMessage}" />
 					</TD>
 				</TR>
 				<TR>
 					<TD />
 					<TD>
-						<h:commandButton value="Add user" action="#{userBean.add}" />
+						<h:commandButton value="Add user" action="#{addUserBean.addUser}" />
 					</TD>
 				</TR>				
 			</table>

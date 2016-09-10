@@ -1,13 +1,19 @@
 package main.net.bestetti.dao;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
 import main.net.bestetti.model.User;
 
 @Named @RequestScoped
@@ -18,12 +24,24 @@ public class UserDao implements Serializable{
 	@PersistenceContext(unitName = "StockOptions")
 	private EntityManager em;
 	
+	//	List of returns:
+	//	0 - User added OK
+	//	1 - Null fields
+	//	2 - E-mail already exists
+	@Transactional
 	public int add(User user) {
+		user.setBalance(BigDecimal.ZERO);
+		user.setLastUpdate(new Date());
 		if (this.getUserByEmail(user) == null) {
-			em.persist(user);
-			return 0;
-		}
-		return 1;		
+			try {
+				em.persist(user);
+				return 0;
+			} catch (PersistenceException e) {
+				return 1;
+			}
+		} else {
+			return 2;
+		}		
 	}
 	
 	public List<User> getUsersOnly() {

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -16,14 +17,22 @@ public class User {
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	private String firstName;
+	
+	@NotNull
 	private String lastName;
 	
-	@Column (unique = true)
+	@Column (unique = true) @NotNull
 	private String email;
 	
+	@NotNull
 	private String password;
+	
+	@NotNull
 	private Date lastUpdate = new Date();
+	
+	@NotNull
 	private BigDecimal balance;
 	
 	@OneToMany (mappedBy = "user")
