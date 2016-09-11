@@ -16,6 +16,7 @@ import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
+import main.net.bestetti.util.XMLParser;
 
 @Named @SessionScoped
 public class OperationBean implements Serializable{
@@ -32,10 +33,22 @@ public class OperationBean implements Serializable{
 	private OperationCalculator calculator;
 	
 	private boolean showConfirmation = false;
+	private boolean showInformation = false;
 	private Operation op = new Operation();
 	private OperationCost oc = new OperationCost();
 	private List<Operation> operations;
 	private boolean tickerEnabled = true;
+	private String infoCompany;
+	private Double infoPrice;
+	private Double infoChange;
+	
+	
+	public void populateInfo() {
+		XMLParser parser = new XMLParser(op.getTicker());
+		infoCompany = parser.getCompany();
+		infoPrice = parser.getLastPrice();
+		infoChange = parser.getChange();
+	}
 		
 	public List<Operation> getOperations() {
 		operations = dao.getOperationsByUser(loginBean.getUser());
@@ -67,10 +80,14 @@ public class OperationBean implements Serializable{
 	
 	//Validators
 	public void volumeValidator(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
-		BigDecimal valueToCheck = new BigDecimal(value.toString());
-		if (valueToCheck.compareTo(BigDecimal.ONE) == -1) {
-			throw new ValidatorException(new FacesMessage("Must be at least 0.01"));			
-		}	
+		try {
+			BigDecimal valueToCheck = new BigDecimal(value.toString());
+			if (valueToCheck.compareTo(BigDecimal.ONE) == -1) {
+				throw new ValidatorException(new FacesMessage("Must be at least 0.01"));			
+			}	
+		} catch (NullPointerException e) {
+			throw new ValidatorException(new FacesMessage(" - Must be at least 0.01"));
+		}		
 	}
 	
 	public void priceValidator(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
@@ -107,6 +124,38 @@ public class OperationBean implements Serializable{
 
 	public void setTickerEnabled(boolean tickerEnabled) {
 		this.tickerEnabled = tickerEnabled;
+	}
+
+	public boolean isShowInformation() {
+		return showInformation;
+	}
+
+	public void setShowInformation(boolean showInformation) {
+		this.showInformation = showInformation;
+	}
+
+	public String getInfoCompany() {
+		return infoCompany;
+	}
+
+	public void setInfoCompany(String infoCompany) {
+		this.infoCompany = infoCompany;
+	}
+
+	public Double getInfoPrice() {
+		return infoPrice;
+	}
+
+	public void setInfoPrice(Double infoPrice) {
+		this.infoPrice = infoPrice;
+	}
+
+	public Double getInfoChange() {
+		return infoChange;
+	}
+
+	public void setInfoChange(Double infoChange) {
+		this.infoChange = infoChange;
 	}
 	
 }

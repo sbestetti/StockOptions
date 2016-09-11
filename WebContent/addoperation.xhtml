@@ -11,7 +11,7 @@
 
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
-			<h:form>
+			<h:form id="operation">
 				<table>
 					<TR>
 						<TD>Type</TD>
@@ -34,7 +34,9 @@
 							<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
 							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 							required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
-							requiredMessage=" - Please type the Stock/Option code" />
+							requiredMessage=" - Please type the Stock/Option code" >
+								<f:ajax event="blur" listener="#{operationBean.populateInfo}" render="information" />
+							</h:inputText> 
 						</TD>
 						<TD><h:message for="ticker" /></TD>
 					</TR>
@@ -71,7 +73,32 @@
 					</TR>					
 				</table>
 			</h:form>
-			<h:form rendered="#{operationBean.showConfirmation}">
+			<h:form id="information">
+				<table>
+					<TR>
+						<TD>Company: </TD>
+						<TD><h:outputLabel value="#{operationBean.infoCompany}" /></TD>
+					</TR>
+					<TR>
+						<TD>Price: </TD>
+						<TD>
+							<h:outputLabel value="#{operationBean.infoPrice}">
+								<f:convertNumber type="currency" />
+							</h:outputLabel>
+						</TD>
+					</TR>
+					<TR>
+						<TD>Change: </TD>
+						<TD>
+							<h:outputLabel value="#{operationBean.infoChange}">
+								<f:convertNumber type="currency" />
+							</h:outputLabel>
+						</TD>
+					</TR>
+				</table>
+			
+			</h:form>
+			<h:form id="confirmation" rendered="#{operationBean.showConfirmation}">
 				<hr />
 				Please confirm:<br />
 				<TABLE>
