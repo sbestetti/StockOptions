@@ -1,34 +1,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+	
 	<h:head>
 		<TITLE>Welcome to StockOptions</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/bootstrap.css" />
-		<link rel="stylesheet" href="resources/css/bootstrap.css"/>
+		<h:outputStylesheet library="css" name="/resources/css/index.css" />
+		<link rel="stylesheet" href="resources/css/index.css"/>
 	</h:head>
-	
+
 	<h:body>
-		<h:form>
-			<table>
-				<tr>
-					<TD><h:outputLabel value="Email" /></TD>
-					<TD><h:inputText value="#{loginBean.email}" /></TD>
-				</tr>
-				<tr>
-					<TD><h:outputLabel value="Password" /></TD>
-					<TD>
-						<h:inputSecret value="#{loginBean.password}" />
-						<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"/>
-					</TD>
-				</tr>
-				<tr>
-					<TD><h:commandButton value="Login" action="#{loginBean.login}" /></TD>
-					<TD><h:commandButton value="Signup" action="/adduser.xhtml"/></TD>
-				</tr>
-				<tr>
-					<TD />
-					<TD><h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"/></TD>
-				</tr>
-			</table>
-		</h:form>
-				
+		<div id="loginForm">
+			<h:form>
+				<table>
+					<tr>
+						<TD><h:outputLabel value="Email" /></TD>
+						<TD><h:inputText value="#{loginBean.email}" /></TD>
+					</tr>
+					<tr>
+						<TD><h:outputLabel value="Password" /></TD>
+						<TD>
+							<h:inputSecret value="#{loginBean.password}" />
+							<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"/>
+						</TD>
+					</tr>
+					<tr>
+						<TD><h:commandButton value="Login" action="#{loginBean.login}" /></TD>
+						<TD><h:commandButton value="Signup" action="/adduser.xhtml"/></TD>
+					</tr>
+					<tr>
+						<TD />
+						<TD><h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"/></TD>
+					</tr>
+				</table>
+			</h:form>
+		</div>
 	</h:body>
+
 </html>
