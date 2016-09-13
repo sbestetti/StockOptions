@@ -1,0 +1,88 @@
+body {
+	font-family: "Verdana", sans-serif;
+	margin: 0px;
+	background-color: #00aaff;	
+}
+
+a:link, a:visited {
+    color: #191966;
+    text-decoration: none;
+ }
+
+a:hover, a:active {
+    color: #5b5bd7;
+}
+
+#header {
+	margin: 0px;
+	padding: 20px 10px 10px 10px;
+	color: white;
+	background-color: #00aaff;
+}
+
+#body {
+	margin: 0px 0px 30px 0px;
+	padding: 10px 15px 250px 15px;
+	color: #595959;	
+	background-color: #ffffe6;
+	background-image: url(../images/body_background.png);
+	background-position: center left;	
+}
+
+#body img {
+	display: inline-block;
+	position: fixed;
+	width: 424.5px;
+	height: 282.75px;
+	opacity: 0.8;
+}
+
+#footer {
+	height: auto;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	color: white;
+	background-color: #00aaff;
+}
+
+#footer p {
+	text-align: center;
+}
+
+input[type="submit"] {
+	float: right;
+	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	background-color: #637aad;
+	border: 1px solid #314179;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: "Verdana";
+	font-size: 13px;
+	padding: 6px 12px;
+	text-decoration: none;
+}
+
+input[type="submit"]:hover {
+	background-color: #5972a7;
+}
+
+input[type="submit"]:active {
+	position: relative;
+	top: 1px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 75%
+}
+
+th {
+	height: 30px;
+}
+
+td {
+	
+}

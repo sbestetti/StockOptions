@@ -2,7 +2,7 @@ body {
 	font-family: "Verdana", sans-serif;
 	color: #595959;
 	background-color: #00aaff;
-	background-image: url(index_background.jpg);
+	background-image: url(../images/index_background.jpg);
 }
 
 form {

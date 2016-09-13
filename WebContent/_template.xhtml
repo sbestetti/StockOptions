@@ -5,27 +5,28 @@
 
 	<h:head>
 		<TITLE>StockOptions On-line book</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/bootstrap.css" />
-		<link rel="stylesheet" href="resources/css/bootstrap.css"/>
+		<h:outputStylesheet library="css" name="/resources/css/_template.css" />
+		<link rel="stylesheet" href="resources/css/_template.css"/>
 	</h:head>	
 	
 	<h:body>
 		<div id="header">
 			<DIV id="loggedUser">
 				<h:form>
-					Logged user: #{loginBean.user.firstName} #{loginBean.user.lastName} | 
-					Current balance: <h:outputLabel value="#{loginBean.balance}">
+					Logged user: <strong>#{loginBean.user.firstName} #{loginBean.user.lastName}</strong> | 
+					Current balance: <strong><h:outputLabel value="#{loginBean.balance}">
 									 	<f:convertNumber type="currency" />
-									 </h:outputLabel> | 
-					<h:commandLink value="Logoff" action="#{loginBean.logoff}" />
+									 </h:outputLabel></strong> 
+					<h:commandButton id="logoff" value="Logoff" action="#{loginBean.logoff}" />
 				</h:form>
 			</DIV>			
 		</div>
 		<DIV id="body">
+			<div></div>
 			<ui:insert name="content" />
 		</DIV>
 		<DIV id="footer">
-			Copyright 2016 - All rights reserved Sergio Bestetti		
+			<p>Copyright 2016 - All rights reserved <a href="mailto:sergio@bestetti.net">Sergio Bestetti</a></p>
 		</DIV>
 	</h:body>
 </html>

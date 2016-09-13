@@ -4,28 +4,26 @@
 	  
 	<h:head>
 		<TITLE>StockOptions On-line book</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/bootstrap.css" />
-		<link rel="stylesheet" href="resources/css/bootstrap.css"/>
+		<h:outputStylesheet library="css" name="/resources/css/menu.css" />
+		<link rel="stylesheet" href="resources/css/menu.css"/>
 	</h:head>	
 	
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
-			<h:form>
-				<ul>
-					<li> Operations
+			<div id="menu">
+				<h:form>
+					<h3>Operations</h3> 
 						<ul>
 							<li><h:commandLink value="Add new" action="#{menuBean.addOperation}" /></li>
-							<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>							
+							<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>					
 						</ul>
-					</li>
-					<li> Settings
+					<h3>Settings</h3> 	
 						<ul>
 							<li><h:commandLink value="Personal data" action="#{menuBean.addOperation}" /></li>
 							<li><h:commandLink value="General configurations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>
 						</ul>
-					</li>
-				</ul>
-			</h:form>
+				</h:form>
+			</div>
 		</ui:define>		
 	</ui:composition>
 		
