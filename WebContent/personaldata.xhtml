@@ -1,19 +1,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:h="http://java.sun.com/jsf/html">
-	
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
 	<h:head>
-		<TITLE>StockOptions On-line book - Register</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/index.css" />
-		<link rel="stylesheet" href="resources/css/index.css"/>
+		<TITLE>StockOptions On-line book</TITLE>
+		<h:outputStylesheet library="css" name="/resources/css/default.css" />
+		<link rel="stylesheet" href="resources/css/default.css"/>
 	</h:head>	
 	
-	<h:body>
-		<h:form>
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="content">
+			<div id="userUpdate">
+				<h:form>
 			<table>
 				<TR>
 					<TD>First name</TD>
 					<TD>
-						<h:inputText id="firstName" value="#{addUserBean.user.firstName}" 
+						<h:inputText id="firstName" value="#{loginBean.user.firstName}" 
 						required="true" requiredMessage="Name required"/>
 					</TD>
 					<TD><h:message for="firstName" /></TD>
@@ -21,7 +24,7 @@
 				<TR>
 					<TD>Last name</TD>
 					<TD>
-						<h:inputText id="lastName" value="#{addUserBean.user.lastName}" 
+						<h:inputText id="lastName" value="#{loginBean.user.lastName}" 
 						required="true" requiredMessage="Last name required"/>
 					</TD>
 					<TD><h:message for="lastName" /></TD>
@@ -29,22 +32,30 @@
 				<TR>
 					<TD>Email</TD>
 					<TD>
-						<h:inputText value="#{addUserBean.user.email}" id="email"
+						<h:inputText value="#{loginBean.user.email}" id="email"
 						required="true" requiredMessage="Email required" />
 						<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}" />
 					</TD>
 					<TD><h:message for="email" /></TD>
 				</TR>
 				<TR>
-					<TD>Password</TD>
+					<TD>Current password</TD>
 					<TD>
-						<h:inputSecret value="#{addUserBean.user.password}" id="password" 
+						<h:inputSecret value="#{loginBean.user.password}" id="password" 
 						required="true" requiredMessage="Password required"/>
 					</TD>
 					<TD><h:message for="password" /></TD>
 				</TR>
 				<TR>
-					<TD>Confirm password</TD>
+					<TD>New password</TD>
+					<TD>
+						<h:inputSecret value="#{loginBean.user.password}" id="password" 
+						required="true" requiredMessage="Password required"/>
+					</TD>
+					<TD><h:message for="password" /></TD>
+				</TR>
+				<TR>
+					<TD>Confirm new password</TD>
 					<TD>
 						<h:inputSecret value="#{addUserBean.passwordCheck}" id="confirmPassword"
 						required="true" requiredMessage="Password check required"/>
@@ -60,5 +71,8 @@
 				</TR>				
 			</table>
 		</h:form>
-	</h:body>
+			</div>
+		</ui:define>		
+	</ui:composition>
+		
 </html>
