@@ -15,6 +15,7 @@ public class XMLParser {
 	private String company;
 	private Double lastPrice;
 	private Double change;
+	private boolean fetchOk;
 	
 	public XMLParser(String ticker) {
 		
@@ -28,6 +29,11 @@ public class XMLParser {
 			InputStream xml = connection.getInputStream();
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = builder.build(xml);
+			if (!(doc.getRootElement().getChild("Status").getText().equals("SUCCESS"))) {
+				fetchOk = false;
+				return;
+			}
+			this.fetchOk = true;
 			this.company = doc.getRootElement().getChild("Name").getText();
 			this.lastPrice = Double.parseDouble(doc.getRootElement().getChild("LastPrice").getText());
 			this.change = Double.parseDouble(doc.getRootElement().getChild("Change").getText());
@@ -65,6 +71,14 @@ public class XMLParser {
 
 	public void setChange(Double change) {
 		this.change = change;
+	}
+
+	public boolean isFetchOk() {
+		return fetchOk;
+	}
+
+	public void setFetchOk(boolean fetchOk) {
+		this.fetchOk = fetchOk;
 	}
 	
 }

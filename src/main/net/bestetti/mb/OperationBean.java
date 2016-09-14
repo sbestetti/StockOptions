@@ -3,7 +3,6 @@ package main.net.bestetti.mb;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -11,7 +10,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
@@ -41,13 +39,15 @@ public class OperationBean implements Serializable{
 	private String infoCompany;
 	private Double infoPrice;
 	private Double infoChange;
-	
-	
+		
 	public void populateInfo() {
 		XMLParser parser = new XMLParser(op.getTicker());
-		infoCompany = parser.getCompany();
-		infoPrice = parser.getLastPrice();
-		infoChange = parser.getChange();
+		if (parser.isFetchOk()) {
+			infoCompany = parser.getCompany();
+			infoPrice = parser.getLastPrice();
+			infoChange = parser.getChange();
+			showInformation = true;
+		}		
 	}
 		
 	public List<Operation> getOperations() {
@@ -59,6 +59,7 @@ public class OperationBean implements Serializable{
 		this.oc = new OperationCost();
 		this.op = new Operation();
 		this.showConfirmation = false;
+		this.showInformation = false;
 	}
 		
 	public void addOperation() {
