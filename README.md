@@ -1,7 +1,7 @@
 # StockOptions
 ####Simple app to demonstrate knowledge acquired at Java bootcamp. 
 
-Use the app to keep record of Stock market transactions. A deployd version can be tested [here](http://stockbook.bestetti.net:8080). You can **signup for a user** or use the sample one:
+Use the app to keep record of Stock market transactions. A deployed version can be tested [here](http://stockbook.bestetti.net:8080). You can **signup for a user** or use the sample one:
 ```
 Login: sample@user.com
 Password: 123
