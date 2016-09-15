@@ -11,68 +11,49 @@
 
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
-			<h:form id="operation">
-				<table>
-					<TR>
-						<TD>Type</TD>
-						<TD>
-							<h:selectOneMenu id="combo" required="true" value="#{operationBean.op.type}" 
-							requiredMessage=" - Please select an operation type">
-								<f:selectItem itemValue="#{null}" itemLabel="-SELECT-" noSelectionOption="true"/>
-								<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit" />
-								<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl" />
-								<f:selectItem itemValue="BUY" itemLabel="Buy" />
-								<f:selectItem itemValue="SELL" itemLabel="Sell" />
-								<f:ajax event="change" execute="combo" render="ticker volume" />
-							</h:selectOneMenu>
-						</TD>
-						<TD><h:message for="combo" /></TD>
-					</TR>
-					<TR>
-						<TD>Ticker</TD>
-						<TD>
-							<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
-							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
-							required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
-							requiredMessage=" - Please type the Stock/Option code" >
-								<f:ajax event="blur" listener="#{operationBean.populateInfo}" render="information" />
-							</h:inputText> 
-						</TD>
-						<TD><h:message for="ticker" /></TD>
-					</TR>
-					<TR>
-						<TD>Volume</TD>
-						<TD>
-							<h:inputText id="volume" value="#{operationBean.op.amount}" 
-							disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
-							required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
-							requiredMessage=" - Please input the amount of assets"
-							validator="#{operationBean.volumeValidator}"/>
-						</TD>
-						<TD><h:message for="volume" /></TD>
-					</TR>
-						<TR>
-						<TD>Unit price</TD>
-						<TD>
-							<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
-							requiredMessage=" - Price is mandatory"
-							validator="#{operationBean.priceValidator}" />
-						</TD>
-						<TD><h:message for="price" /></TD>
-					</TR>
-					<TR>
-						<TD />
-						<TD>
-							<h:commandButton value="Add" action="#{operationBean.addOperation}"/>
-						</TD>
-						<TD>
-							<h:commandLink value="Cancel" action="#{operationBean.cancel}">
-								<f:ajax />
-							</h:commandLink>
-						</TD>
-					</TR>					
-				</table>
-			</h:form>
+			<div id="formAdd">
+				<h:form id="operation">
+					<h:outputLabel for="combo" value="Type"></h:outputLabel>
+					<h:selectOneMenu id="combo" required="true" value="#{operationBean.op.type}" 
+					requiredMessage=" - Please select an operation type">
+							<f:selectItem itemValue="#{null}" itemLabel="-SELECT-" noSelectionOption="true"></f:selectItem>
+							<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit"></f:selectItem>
+							<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl"></f:selectItem>
+							<f:selectItem itemValue="BUY" itemLabel="Buy"></f:selectItem>
+							<f:selectItem itemValue="SELL" itemLabel="Sell"></f:selectItem>
+							<f:ajax event="change" execute="combo" render="ticker volume"></f:ajax>
+					</h:selectOneMenu>
+					<h:message for="combo"></h:message>
+					<br></br>
+					<h:outputLabel for="ticker" value="Ticker"></h:outputLabel>
+					<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
+					disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
+					required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
+					requiredMessage=" - Please type the Stock/Option code">
+						<f:ajax event="blur" listener="#{operationBean.populateInfo}" render="information"></f:ajax>
+					</h:inputText> 
+					<h:message for="ticker"></h:message>
+					<br></br>
+					<h:outputLabel for="volume" value="Volume"></h:outputLabel>
+					<h:inputText id="volume" value="#{operationBean.op.amount}" 
+					disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
+					required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
+					requiredMessage=" - Please input the amount of assets"
+					validator="#{operationBean.volumeValidator}"></h:inputText>
+					<h:message for="volume"></h:message>
+					<br></br>
+					<h:outputLabel for="price" value="Price"></h:outputLabel>
+					<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
+					requiredMessage=" - Price is mandatory"
+					validator="#{operationBean.priceValidator}"></h:inputText>
+					<h:message for="price"></h:message>
+					<br></br>
+					<h:commandButton value="Add" action="#{operationBean.addOperation}"></h:commandButton>
+					<h:commandButton value="Cancel" action="#{operationBean.cancel}">
+						<f:ajax></f:ajax>
+					</h:commandButton>
+				</h:form>
+			</div>		
 			<h:form id="information" rendered="#{operationBean.showInformation}">
 				<table>
 					<TR>

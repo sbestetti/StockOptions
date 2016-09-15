@@ -78,8 +78,19 @@ a:hover, a:active {
     text-decoration: underline;
  }
 
-input[type="submit"] {
-	float: right;
+ #formAdd {
+ 	font-size: initial;
+ }
+
+#formAdd label {
+	text-shadow: #fdf2e4 0 1px 0;
+	font-size:18px;
+	margin: 0 0 10px 0;
+	font-weight:bold;
+	text-align:center;
+}
+
+ input[type="submit"] {
 	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
@@ -103,15 +114,38 @@ input[type="submit"]:active {
 	top: 1px;
 }
 
-table {
-	border-collapse: collapse;
-	width: 75%
+#loggedUser input[type="submit"] {
+	float: right;
 }
 
-th {
-	height: 30px;
+#formAdd input[value="Add"] {
+	margin-left: 60px;
 }
 
-td {
-	
+#formAdd input[value="Cancel"] {
+	margin-left: 60px;
+	background-color: #cc0000;
+}
+
+input[type="text"], select {
+	display: block;
+	margin-left: 20px;
+	margin-top: 2px;
+	border: 2px solid #595959;
+	background: #ffffe6;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #595959;
+	-webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	-moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	padding:8px;
+	margin-bottom:8px;
+	width:280px;
+}
+
+input[type="text"], select:focus {
+	background: #fff;
+	color: #595959;
 }
