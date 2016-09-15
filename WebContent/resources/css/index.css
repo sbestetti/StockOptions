@@ -3,8 +3,6 @@ body {
 	color: #595959;
 	background-color: #00aaff;
 	background-image: url(../images/index_background.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
 #loginForm {

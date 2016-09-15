@@ -73,6 +73,11 @@ a:hover, a:active {
 	text-align: center;
 }
 
+#footer a:link, a:visited {
+    color: white;
+    text-decoration: underline;
+ }
+
 input[type="submit"] {
 	float: right;
 	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
