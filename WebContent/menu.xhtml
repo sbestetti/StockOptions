@@ -12,19 +12,69 @@
 		<ui:define name="content">
 			<div id="menu">
 				<h:form>
-					<h3>Operations</h3> 
-						<ul>
-							<li><h:commandLink value="Add new" action="#{menuBean.addOperation}" /></li>
-							<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>					
-						</ul>
-					<h3>Settings</h3> 	
-						<ul>
-							<li><h:commandLink value="Personal data" /></li>
-							<li><h:commandLink value="General configurations" /></li>
-						</ul>
+					<ul>
+						<li>Operations</li>
+						<li>
+							<ul>
+								<li><h:commandLink value="Add new" action="#{menuBean.addOperation}" /></li>
+								<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>		
+							</ul>
+						</li>
+						<li>Settings</li>
+						<li>	
+							<ul>
+								<li><h:commandLink value="Personal data" /></li>
+								<li><h:commandLink value="General configurations" /></li>
+							</ul>
+						</li>
+					</ul>
 				</h:form>
 			</div>
-		</ui:define>		
-	</ui:composition>
-		
+			<!-- TradingView Widget BEGIN -->
+			<div id="tv-miniwidget-5dc6f"></div>
+				<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+				<script type="text/javascript">
+					new TradingView.MiniWidget({
+  						"container_id": "tv-miniwidget-5dc6f",
+  						"tabs": [
+    						"Equities"
+  						],
+  						"symbols": {
+    						"Equities": [
+      						[
+        						"Apple",
+        						"AAPL"
+      						],
+      						[
+        						"Google",
+        						"GOOG"
+      						],
+      						[
+        						"Facebook",
+						        "NASDAQ:FB|1y"
+						      ],
+						      [
+						        "Microsoft",
+						        "NASDAQ:MSFT|1y"
+						      ],
+						      [
+						        "Twitter",
+						        "NYSE:TWTR|1y"
+						      ]
+						    ]
+						  },
+						  "gridLineColor": "#e9e9ea",
+						  "fontColor": "#83888d",
+						  "underLineColor": "#dbeffb",
+						  "trendLineColor": "#4bafe9",
+						  "activeTickerBackgroundColor": "#edf0f3",
+						  "large_chart_url": "https://www.tradingview.com/chart/",
+						  "noGraph": false,
+						  "width": "300px",
+						  "height": "400px",
+						  "locale": "en"
+						});
+					</script>
+			</ui:define>		
+	</ui:composition>		
 </html>

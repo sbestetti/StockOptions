@@ -1,7 +1,7 @@
 body {
 	font-family: "Verdana", sans-serif;
 	margin: 0px;
-	background-color: #00aaff;	
+	background-color: #404040;	
 }
 
 a:link, a:visited {
@@ -17,16 +17,18 @@ a:hover, a:active {
 	margin: 0px;
 	padding: 20px 10px 10px 10px;
 	color: white;
-	background-color: #00aaff;
+	background-color: #404040;
 }
 
 #body {
+	height: 480px;
 	margin: 0px 0px 30px 0px;
-	padding: 10px 15px 250px 15px;
+	padding: 0;
 	color: #595959;	
 	background-color: #ffffe6;
 	background-image: url(../images/body_background.png);
 	background-position: center left;	
+	font-size: 0px;
 }
 
 #body img {
@@ -37,12 +39,34 @@ a:hover, a:active {
 	opacity: 0.8;
 }
 
+#body ul {
+	list-style-type: none;
+	padding: 0;
+	margin-left: 10px;
+}
+
+#menu {
+	margin-top: 20px;
+	display: inline-block;
+	position: absolute;
+	font-size: initial;
+}
+
+#tv-miniwidget-5dc6f {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	position: relative;
+	display: inline-block;
+	font-size: initial;
+	margin-left: 680px;
+	margin-top: 40px;
+}
+
 #footer {
-	height: auto;
+	height: 30px;
 	margin: 10px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	color: white;
-	background-color: #00aaff;
+	background-color: #404040;
 }
 
 #footer p {

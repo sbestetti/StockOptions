@@ -3,14 +3,20 @@ body {
 	color: #595959;
 	background-color: #00aaff;
 	background-image: url(../images/index_background.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
-form {
+#loginForm {
+	width: 260px;
+	height: 90px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -47.5px;
+	margin-left: -132.5px;
+	padding: 5px;
 	background-color: #ffffe6;
-	position: fixed;
-	padding: 10px;
-	top: 250px;
-	left: 500px;
 	border-style: solid;
 	border-radius: 10px;
 	border-color: #99b3e6;
