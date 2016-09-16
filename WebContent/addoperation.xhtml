@@ -15,7 +15,7 @@
 				<h:form id="operation">
 					<h:outputLabel for="combo" value="Type"></h:outputLabel>
 					<h:selectOneMenu id="combo" required="true" value="#{operationBean.op.type}" 
-					requiredMessage=" - Please select an operation type">
+					requiredMessage="Please select an operation type">
 							<f:selectItem itemValue="#{null}" itemLabel="-SELECT-" noSelectionOption="true"></f:selectItem>
 							<f:selectItem itemValue="DEPOSIT" itemLabel="Deposit"></f:selectItem>
 							<f:selectItem itemValue="WITHDRAWL" itemLabel="Withdrawl"></f:selectItem>
@@ -23,30 +23,30 @@
 							<f:selectItem itemValue="SELL" itemLabel="Sell"></f:selectItem>
 							<f:ajax event="change" execute="combo" render="ticker volume"></f:ajax>
 					</h:selectOneMenu>
-					<h:message for="combo"></h:message>
+					<h:message for="combo" class="errorMessage"></h:message>
 					<br></br>
 					<h:outputLabel for="ticker" value="Ticker"></h:outputLabel>
 					<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
 					disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 					required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 
-					requiredMessage=" - Please type the Stock/Option code">
+					requiredMessage="Please type the Stock/Option code">
 						<f:ajax event="blur" listener="#{operationBean.populateInfo}" render="information"></f:ajax>
 					</h:inputText> 
-					<h:message for="ticker"></h:message>
+					<h:message for="ticker" class="errorMessage"></h:message>
 					<br></br>
 					<h:outputLabel for="volume" value="Volume"></h:outputLabel>
 					<h:inputText id="volume" value="#{operationBean.op.amount}" 
 					disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 					required="#{operationBean.op.type == 'BUY' || operationBean.op.type == 'SELL'}" 
-					requiredMessage=" - Please input the amount of assets"
+					requiredMessage="Please input the amount of assets"
 					validator="#{operationBean.volumeValidator}"></h:inputText>
-					<h:message for="volume"></h:message>
+					<h:message for="volume" class="errorMessage"></h:message>
 					<br></br>
 					<h:outputLabel for="price" value="Price"></h:outputLabel>
 					<h:inputText id="price" value="#{operationBean.op.unitPrice}" required="true" 
-					requiredMessage=" - Price is mandatory"
+					requiredMessage="Price is mandatory"
 					validator="#{operationBean.priceValidator}"></h:inputText>
-					<h:message for="price"></h:message>
+					<h:message for="price" class="errorMessage"></h:message>
 					<br></br>
 					<h:commandButton value="Add" action="#{operationBean.addOperation}"></h:commandButton>
 					<h:commandButton value="Cancel" action="#{operationBean.cancel}">
@@ -54,82 +54,51 @@
 					</h:commandButton>
 				</h:form>
 			</div>		
-			<h:form id="information" rendered="#{operationBean.showInformation}">
-				<table>
-					<TR>
-						<TD>Company: </TD>
-						<TD><h:outputLabel value="#{operationBean.infoCompany}" /></TD>
-					</TR>
-					<TR>
-						<TD>Price: </TD>
-						<TD>
-							<h:outputLabel value="#{operationBean.infoPrice}">
-								<f:convertNumber type="currency" />
-							</h:outputLabel>
-						</TD>
-					</TR>
-					<TR>
-						<TD>Change: </TD>
-						<TD>
-							<h:outputLabel value="#{operationBean.infoChange}">
-								<f:convertNumber type="currency" />
-							</h:outputLabel>
-						</TD>
-					</TR>
-				</table>
-			
-			</h:form>
-			<h:form id="confirmation" rendered="#{operationBean.showConfirmation}">
-				<hr />
-				Please confirm:<br />
-				<TABLE>
-					<TR>
-						<TD>Total asset costs/income</TD>
-						<TD>
-							<h:inputText value="#{operationBean.op.total}">
-								<f:convertNumber type="currency" />
-							</h:inputText>
-						</TD>
-					</TR>
-					<TR>
-						<TD>Tax</TD>
-						<TD>
-							<h:inputText value="#{operationBean.oc.tax}">
-								<f:convertNumber type="currency" />
-							</h:inputText>
-						</TD>
-					</TR>
-					<TR>
-						<TD>Broker fee</TD>
-						<TD>
-							<h:inputText value="#{operationBean.oc.fee}">
-								<f:convertNumber type="currency" />
-							</h:inputText>
-						</TD>
-					</TR>
-					<TR>
-						<TD>Operation costs</TD>
-						<TD>
-							<h:inputText value="#{operationBean.oc.maintenance}">
-								<f:convertNumber type="currency" />
-							</h:inputText>
-						</TD>
-					</TR>
-					<TR>
-						<TD>Total operation value</TD>
-						<TD>
-							<h:inputText value="#{operationBean.op.totalPlusCosts}">
-								<f:convertNumber type="currency" />
-							</h:inputText>
-						</TD>
-					</TR>
-					<TR>
-						<TD />
-						<TD><h:commandButton value="Confirm" action="#{operationBean.confirmAdding}" /></TD>
-						<TD><h:commandLink value="Cancel" action="#{operationBean.cancel}" /></TD>
-					</TR>
-				</TABLE>
-			</h:form>
+			<div id="formInfo">
+				<h:form id="information" rendered="#{operationBean.showInformation}">
+					<h:outputLabel value="Company: #{operationBean.infoCompany}"></h:outputLabel>
+					<br></br>
+					<h:outputLabel value="Price: #{operationBean.infoPrice}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:outputLabel>
+					<br></br>
+					<h:outputLabel value="Change: #{operationBean.infoChange}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:outputLabel>
+					<br></br>
+				</h:form>
+			</div>
+			<div id="formConfirmation">
+				<h:form rendered="#{operationBean.showConfirmation}">
+					<h:outputLabel for="opTotal" value="Assets"></h:outputLabel>
+					<h:inputText id="opTotal" value="#{operationBean.op.total}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:inputText>
+					<br></br>
+					<h:outputLabel for="tax" value="Tax"></h:outputLabel>
+					<h:inputText id="tax" value="#{operationBean.oc.tax}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:inputText>
+					<br></br>
+					<h:outputLabel for="brokerFee" value="Broker fee"></h:outputLabel>
+					<h:inputText id="brokerFee" value="#{operationBean.oc.fee}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:inputText>
+					<br></br>
+					<h:outputLabel for="maintenance" value="Operation costs"></h:outputLabel>		
+					<br></br>
+					<h:inputText id="maintenance" value="#{operationBean.oc.maintenance}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:inputText>
+					<h:outputLabel for="finalTotal" value="Total operation value"></h:outputLabel>
+					<h:inputText id="finalTotal" value="#{operationBean.op.totalPlusCosts}">
+						<f:convertNumber type="currency"></f:convertNumber>
+					</h:inputText>
+					<h:commandButton value="Confirm" action="#{operationBean.confirmAdding}"></h:commandButton>
+					<h:commandButton value="Cancel" action="#{operationBean.cancel}"></h:commandButton>
+				</h:form>
+			</div>	
+
 		</ui:define>
 	</ui:composition>	
 </html>

@@ -61,26 +61,41 @@ a:hover, a:active {
 	margin-top: 40px;
 }
 
-#footer {
-	height: 30px;
-	margin: 10px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
+#formAdd {
+ 	margin-top: 20px;
+ 	margin-left: 10px;
+ 	display: inline-block;
+ 	font-size: initial;
+ 	position: absolute;
+ 	
+ }
+
+#formInfo {
+	margin-top: 20px;
+	margin-left: 800px;
+	display: inline-block;
+	position: absolute;
+	font-size: initial;
 	color: white;
 	background-color: #404040;
+	padding: 3px;
 }
 
-#footer p {
-	text-align: center;
+#formConfirmation {
+	margin-top: 20px;
+	margin-left: 400px;
+	display: inline-block;
+	font-size: initial;
+	position: absolute;
 }
 
-#footer a:link, a:visited {
-    color: white;
-    text-decoration: underline;
- }
-
- #formAdd {
- 	font-size: initial;
- }
+#formConfirmation label {
+	text-shadow: #fdf2e4 0 1px 0;
+	font-size:18px;
+	margin: 0 0 10px 0;
+	font-weight:bold;
+	text-align:center;
+}
 
 #formAdd label {
 	text-shadow: #fdf2e4 0 1px 0;
@@ -90,7 +105,7 @@ a:hover, a:active {
 	text-align:center;
 }
 
- input[type="submit"] {
+input[type="submit"] {
 	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
@@ -114,25 +129,25 @@ input[type="submit"]:active {
 	top: 1px;
 }
 
-#loggedUser input[type="submit"] {
+#loggedUser input[type=submit] {
 	float: right;
 }
 
-#formAdd input[value="Add"] {
+input[value="Add"] {
 	margin-left: 60px;
 }
 
-#formAdd input[value="Cancel"] {
+input[value="Cancel"] {
 	margin-left: 60px;
 	background-color: #cc0000;
 }
 
-input[type="text"], select {
+input[type=text], select {
 	display: block;
 	margin-left: 20px;
 	margin-top: 2px;
+	background: white;
 	border: 2px solid #595959;
-	background: #ffffe6;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -145,7 +160,30 @@ input[type="text"], select {
 	width:280px;
 }
 
-input[type="text"], select:focus {
-	background: #fff;
-	color: #595959;
+input[type=text]:disabled, select:disabled {
+	background: #ffffe6;	
 }
+
+.errorMessage {
+	position: relative;
+	color: red;
+	display: inline-block;	
+}
+
+#footer {
+	height: 30px;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	color: white;
+	background-color: #404040;
+}
+
+#footer p {
+	text-align: center;
+}
+
+#footer a:link, a:visited {
+    color: white;
+    text-decoration: underline;
+}
+

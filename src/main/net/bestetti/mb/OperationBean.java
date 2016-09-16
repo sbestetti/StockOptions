@@ -87,7 +87,7 @@ public class OperationBean implements Serializable{
 				throw new ValidatorException(new FacesMessage("Must be at least 0.01"));			
 			}	
 		} catch (NullPointerException e) {
-			throw new ValidatorException(new FacesMessage(" - Must be at least 0.01"));
+			throw new ValidatorException(new FacesMessage("Must be at least 0.01"));
 		}		
 	}
 	
