@@ -25,7 +25,7 @@
 					</h:selectOneMenu>
 					<h:message for="combo" class="errorMessage"></h:message>
 					<br></br>
-					<h:outputLabel for="ticker" value="Ticker"></h:outputLabel>
+					<h:outputLabel for="ticker" value="Ticker (IE. aapl)"></h:outputLabel>
 					<h:inputText id="ticker" value="#{operationBean.op.ticker}" 
 					disabled="#{operationBean.op.type == 'DEPOSIT' || operationBean.op.type == 'WITHDRAWL'}" 
 					required="#{operationBean.op.type == 'SELL' || operationBean.op.type == 'BUY'}" 

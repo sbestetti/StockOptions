@@ -67,18 +67,21 @@ a:hover, a:active {
  	display: inline-block;
  	font-size: initial;
  	position: absolute;
- 	
- }
+}
 
 #formInfo {
-	margin-top: 20px;
+	margin-top: 200px;
 	margin-left: 800px;
 	display: inline-block;
 	position: absolute;
 	font-size: initial;
-	color: white;
-	background-color: #404040;
-	padding: 3px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: #595959;	
+	background-color: white;
+	text-shadow: #fdf2e4 0 1px 0;
+	font-size:18px;
+	font-weight:bold;
+	padding: 10px;
 }
 
 #formConfirmation {
@@ -187,3 +190,13 @@ input[type=text]:disabled, select:disabled {
     text-decoration: underline;
 }
 
+.datagrid table {
+	color: black;
+	border-style: none;
+	border-collapse: collapse;
+}
+
+.datagrid table tbody td {
+	border-bottom: 1px solid;
+	padding: 0px 25px;
+}

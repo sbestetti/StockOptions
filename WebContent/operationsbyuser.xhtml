@@ -11,55 +11,56 @@
 
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
-			<h:form>
-				<h:dataTable value="#{operationBean.operations}" var="operation">
+			<div id="operationsTable" class="datagrid">
+				<h:form>
+					<h:dataTable value="#{operationBean.operations}" var="operation" class="table">
+						<h:column>
+							<f:facet name="header">Created</f:facet>
+							<h:outputLabel value="#{operation.created}">
+								<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+							</h:outputLabel>						
+						</h:column> 
 					
-					<h:column>
-						<f:facet name="header">Created</f:facet>
-						<h:outputLabel value="#{operation.created}">
-							<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
-						</h:outputLabel>						
-					</h:column> 
-				
-					<h:column>
-						<f:facet name="header">Type</f:facet>
-						#{operation.type}
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Stock</f:facet>
-						#{operation.ticker}
-					</h:column>
-				
-					<h:column>
-						<f:facet name="header">Price/Unit</f:facet>
-						<h:outputLabel value="#{operation.unitPrice}">
-							<f:convertNumber type="currency" />	
-						</h:outputLabel>
+						<h:column>
+							<f:facet name="header">Type</f:facet>
+							#{operation.type}
+						</h:column>
 						
-					</h:column>
+						<h:column>
+							<f:facet name="header">Stock</f:facet>
+							#{operation.ticker}
+						</h:column>
 					
-					<h:column>
-						<f:facet name="header">Volume</f:facet>
-						#{operation.amount}
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Operation costs</f:facet>
-						<h:outputLabel value="#{operation.oc.total}">
-							<f:convertNumber type="currency" />	
-						</h:outputLabel>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">Operation total</f:facet>
-						<h:outputLabel value="#{operation.totalPlusCosts}">
-							<f:convertNumber type="currency" />	
-						</h:outputLabel>
-					</h:column>				
-				</h:dataTable>
+						<h:column>
+							<f:facet name="header">Price/Unit</f:facet>
+							<h:outputLabel value="#{operation.unitPrice}">
+								<f:convertNumber type="currency" />	
+							</h:outputLabel>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Volume</f:facet>
+							#{operation.amount}
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Operation costs</f:facet>
+							<h:outputLabel value="#{operation.oc.total}">
+								<f:convertNumber type="currency" />	
+							</h:outputLabel>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Operation total</f:facet>
+							<h:outputLabel value="#{operation.totalPlusCosts}">
+								<f:convertNumber type="currency" />	
+							</h:outputLabel>
+						</h:column>				
+					</h:dataTable>
 				<h:commandLink value="Return" action="/menu.xhtml?faces-redirect=true"/>
 			</h:form>
+			</div>
+			
 		</ui:define>
 	</ui:composition>	
 </html>
