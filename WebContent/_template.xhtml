@@ -4,9 +4,12 @@
 		xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:head>
+		<ui:insert name="head-meta">
+			<meta name="viewport" content="width=device-width" />	
+		</ui:insert>
 		<TITLE>StockOptions On-line book</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/_template.css" />
 		<link rel="stylesheet" href="resources/css/_template.css"/>
+		<link rel="stylesheet" href="resources/css/_template_mobile.css" media="(max-width: 768px)"/>
 	</h:head>	
 	
 	<h:body>
