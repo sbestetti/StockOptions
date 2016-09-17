@@ -1,111 +1,7 @@
+/*-------------------------------------------------------------------------Body-------------------------------------------------------------------------*/
 body {
 	font-family: "Verdana", sans-serif;
 	margin: 0px;
-	background-color: #404040;	
-}
-
-a:link, a:visited {
-    color: #191966;
-    text-decoration: none;
- }
-
-a:hover, a:active {
-    color: #5b5bd7;
-}
-
-#header {
-	margin: 0px;
-	padding: 20px 10px 10px 10px;
-	color: white;
-	background-color: #404040;
-}
-
-#body {
-	height: 480px;
-	margin: 0px 0px 30px 0px;
-	padding: 0;
-	color: #595959;	
-	background-color: #ffffe6;
-	background-image: url(../images/body_background.png);
-	background-position: center left;	
-	font-size: 0px;
-}
-
-#body img {
-	display: inline-block;
-	position: fixed;
-	width: 424.5px;
-	height: 282.75px;
-	opacity: 0.8;
-}
-
-#body ul {
-	list-style-type: none;
-	padding: 0;
-	margin-left: 10px;
-}
-
-#menu {
-	margin-top: 20px;
-	display: inline-block;
-	position: absolute;
-	font-size: initial;
-}
-
-#tv-miniwidget-5dc6f {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	position: relative;
-	display: inline-block;
-	font-size: initial;
-	margin-left: 680px;
-	margin-top: 40px;
-}
-
-#formAdd {
- 	margin-top: 20px;
- 	margin-left: 10px;
- 	display: inline-block;
- 	font-size: initial;
- 	position: absolute;
-}
-
-#formInfo {
-	margin-top: 200px;
-	margin-left: 800px;
-	display: inline-block;
-	position: absolute;
-	font-size: initial;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	color: #595959;	
-	background-color: white;
-	text-shadow: #fdf2e4 0 1px 0;
-	font-size:18px;
-	font-weight:bold;
-	padding: 10px;
-}
-
-#formConfirmation {
-	margin-top: 20px;
-	margin-left: 400px;
-	display: inline-block;
-	font-size: initial;
-	position: absolute;
-}
-
-#formConfirmation label {
-	text-shadow: #fdf2e4 0 1px 0;
-	font-size:18px;
-	margin: 0 0 10px 0;
-	font-weight:bold;
-	text-align:center;
-}
-
-#formAdd label {
-	text-shadow: #fdf2e4 0 1px 0;
-	font-size:18px;
-	margin: 0 0 10px 0;
-	font-weight:bold;
-	text-align:center;
 }
 
 input[type="submit"] {
@@ -118,7 +14,7 @@ input[type="submit"] {
 	cursor: pointer;
 	color: #ffffff;
 	font-family: "Verdana";
-	font-size: 13px;
+	font-size: 20px;
 	padding: 6px 12px;
 	text-decoration: none;
 }
@@ -132,53 +28,74 @@ input[type="submit"]:active {
 	top: 1px;
 }
 
-#loggedUser input[type=submit] {
-	float: right;
+a:link, a:visited {
+    color: #191966;
+    text-decoration: none;
+ }
+
+a:hover, a:active {
+    color: #5b5bd7;
 }
 
-input[value="Add"] {
-	margin-left: 60px;
+ul {
+	list-style-type: none;	
+	padding: 0;
+	margin: 0;
 }
 
-input[value="Cancel"] {
-	margin-left: 60px;
-	background-color: #cc0000;
+ul li {
+	margin-left: 10px;
 }
 
-input[type=text], select {
-	display: block;
-	margin-left: 20px;
-	margin-top: 2px;
-	background: white;
-	border: 2px solid #595959;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	color: #595959;
-	-webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
-	-moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
-	box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
-	padding:8px;
-	margin-bottom:8px;
-	width:280px;
-}
+/*-------------------------------------------------------------------------Header-------------------------------------------------------------------------*/
 
-input[type=text]:disabled, select:disabled {
-	background: #ffffe6;	
-}
-
-.errorMessage {
+#header {
 	position: relative;
-	color: red;
-	display: inline-block;	
+	height: 8%;
+	width: 100%;
+	background-color: #404040;
+	color: #fff;
 }
+
+#loggedUser {
+	display: inline-block;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 10px;
+	font-size: 25px;
+	width: 80%;
+	height: 100%;
+}
+
+#logoff input[type="submit"] {
+	position: absolute;
+	right: 3%;
+	top: 25%;
+}
+
+/*-------------------------------------------------------------------------Body---------------------------------------------------------------------------*/
+
+#body {
+	position: absolute;
+	height: 84%;
+	width: 100%;
+	bottom: 8%;
+	background-color: #ffffe6;
+	color: #595959;
+	background-image: url(../images/body_background.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+/*-------------------------------------------------------------------------Footer-------------------------------------------------------------------------*/
 
 #footer {
-	height: 30px;
-	margin: 10px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	color: white;
+	position: absolute;
+	height: 8%;
+	width: 100%;
+	bottom: 0;
 	background-color: #404040;
+	color: #fff;
 }
 
 #footer p {
@@ -190,13 +107,20 @@ input[type=text]:disabled, select:disabled {
     text-decoration: underline;
 }
 
-.datagrid table {
-	color: black;
-	border-style: none;
-	border-collapse: collapse;
+/*-------------------------------------------------------------------------Menu---------------------------------------------------------------------------*/
+
+#menu {
+	position: absolute;
+	top: 5%;
+	left: 2%;
+	font-size: 30px;
+
+
 }
 
-.datagrid table tbody td {
-	border-bottom: 1px solid;
-	padding: 0px 25px;
+#priceWindow {
+	position: absolute;
+	top: 25%;
+	right: 20%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

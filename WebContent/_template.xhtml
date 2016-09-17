@@ -11,22 +11,24 @@
 	
 	<h:body>
 		<div id="header">
-			<DIV id="loggedUser">
+			<div id="loggedUser">
 				<h:form>
-					Logged user: <strong>#{loginBean.user.firstName} #{loginBean.user.lastName}</strong> | 
-					Current balance: <strong><h:outputLabel value="#{loginBean.balance}">
-									 	<f:convertNumber type="currency" />
-									 </h:outputLabel></strong> 
-					<h:commandButton id="logoff" value="Logoff" action="#{loginBean.logoff}" />
+					Logged user: <strong>#{loginBean.user.firstName} #{loginBean.user.lastName}</strong> | Current balance: <strong><h:outputLabel value="#{loginBean.balance}">
+						<f:convertNumber type="currency" />
+					</h:outputLabel></strong> 
 				</h:form>
-			</DIV>			
+			</div>			
+			<div id="logoff">
+				<h:form>
+					<h:commandButton id="logoff" value="Logoff" action="#{loginBean.logoff}"></h:commandButton>
+				</h:form>
+			</div>
 		</div>
-		<DIV id="body">
-			<div></div>
+		<div id="body">
 			<ui:insert name="content" />
-		</DIV>
-		<DIV id="footer">
+		</div>
+		<div id="footer">
 			<p>Copyright 2016 - All rights reserved <a href="mailto:sergio@bestetti.net">Sergio Bestetti</a></p>
-		</DIV>
+		</div>
 	</h:body>
 </html>

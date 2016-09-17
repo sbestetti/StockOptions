@@ -16,10 +16,13 @@
 						<li>Operations</li>
 						<li>
 							<ul>
-								<li><h:commandLink value="Add new" action="#{menuBean.addOperation}" /></li>
-								<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true" /></li>		
+								<li><h:commandLink value="Add new" action="#{menuBean.addOperation}"></h:commandLink></li>
+								<li><h:commandLink value="List all my operations" action="/operationsbyuser.xhtml?faces-redirect=true"></h:commandLink></li>		
 							</ul>
 						</li>
+					</ul>
+					<br></br>
+					<ul>
 						<li>Settings</li>
 						<li>	
 							<ul>
@@ -31,7 +34,7 @@
 				</h:form>
 			</div>
 			<!-- TradingView Widget BEGIN -->
-			<div id="tv-miniwidget-5dc6f"></div>
+			<div id="priceWindow">
 				<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
 				<script type="text/javascript">
 					new TradingView.MiniWidget({
@@ -75,6 +78,7 @@
 						  "locale": "en"
 						});
 					</script>
-			</ui:define>		
+			</div>
+		</ui:define>		
 	</ui:composition>		
 </html>
