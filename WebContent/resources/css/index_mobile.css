@@ -4,18 +4,18 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #ffffe6;
-	color: #595959;
-	background-image: url(../images/index_background.png);
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-position: 0 300px;
+	color: #595959;		
 }
 
 /*-------------------------------------------------------------------------Info----------------------------------------------------------------------*/
 #info {
-	margin: auto;
-	margin-top: 1%;
+	position: absolute;
+	margin-top: 5%;
+	margin-left: 2.5%;
 	width: 95%;
-	padding: 5px;
+	padding: 1px;
+	font-size: 13px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	background-color: #404040;
 	color: #fff;
@@ -30,9 +30,9 @@ body {
 #loginForm {
 	position: absolute;
 	padding: 5px;
-	width: 16%;
+	width: 90%;
 	top: 30%;
-	left: 42%;
+	left: 5%;
 }
 
 #loginForm label {

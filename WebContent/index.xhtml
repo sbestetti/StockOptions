@@ -1,45 +1,42 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
-	
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"													
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+
 	<h:head>
-		<TITLE>Welcome to StockOptions</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/index.css" />
+		<ui:insert name="head-meta">
+			<meta name="viewport" content="user-scalable=no, width=device-width" />	
+		</ui:insert>
+		<TITLE>StockOptions On-line book</TITLE>
 		<link rel="stylesheet" href="resources/css/index.css"/>
-	</h:head>
+		<link rel="stylesheet" href="resources/css/index_mobile.css" media="(max-width: 768px)"/>
+	</h:head>	
 
 	<h:body>
-		<div id="message">
+		
+		<div id="info">
 			<p>
-				Sample User:<br />
-				Login: sample@user.com<br />
-				Password: 123
+				<strong>Sample user:</strong> sample@user.com / password - 123
 			</p>
 		</div>
+		
 		<div id="loginForm">
 			<h:form>
-				<table>
-					<tr>
-						<TD><h:outputLabel value="Email" /></TD>
-						<TD><h:inputText value="#{loginBean.email}" /></TD>
-					</tr>
-					<tr>
-						<TD><h:outputLabel value="Password" /></TD>
-						<TD>
-							<h:inputSecret value="#{loginBean.password}" />
-							<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"/>
-						</TD>
-					</tr>
-					<tr>
-						<TD><h:commandButton value="Login" action="#{loginBean.login}" /></TD>
-						<TD><h:commandButton value="Signup" action="/adduser.xhtml"/></TD>
-					</tr>
-					<tr>
-						<TD />
-						<TD><h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"/></TD>
-					</tr>
-				</table>
+				<h:outputLabel for="email" value="Email"></h:outputLabel>
+				<h:inputText id="email" value="#{loginBean.email}"></h:inputText>
+				<br></br>
+				<h:outputLabel for="password" value="Password"></h:outputLabel>
+				<h:inputSecret id="password" value="#{loginBean.password}"></h:inputSecret>
+				<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"></h:outputLabel>
+				<div id="buttons">
+					<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
+					<h:commandButton value="Signup" action="/adduser.xhtml"></h:commandButton>
+				</div>
+				<div id="messages">
+					<h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"></h:commandLink>
+				</div>
 			</h:form>
 		</div>
-		
 	</h:body>
 
 </html>
