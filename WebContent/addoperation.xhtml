@@ -5,8 +5,6 @@
 	
 	<h:head>
 		<TITLE>StockOptions New Operation</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/bootstrap.css" />
-		<link rel="stylesheet" href="resources/css/bootstrap.css"/>
 	</h:head>	
 
 	<ui:composition template="/_template.xhtml">
@@ -54,8 +52,8 @@
 					</h:commandButton>
 				</h:form>
 			</div>		
-			<div id="formInfo">
-				<h:form id="information" rendered="#{operationBean.showInformation}">
+			<h:panelGroup id="formInfo" layout="block" rendered="#{operationBean.showInformation}">
+				<h:form id="information" >
 					<h:outputLabel value="Company: #{operationBean.infoCompany}"></h:outputLabel>
 					<br></br>
 					<h:outputLabel value="Price: #{operationBean.infoPrice}">
@@ -67,9 +65,12 @@
 					</h:outputLabel>
 					<br></br>
 				</h:form>
-			</div>
-			<div id="formConfirmation">
-				<h:form rendered="#{operationBean.showConfirmation}">
+			</h:panelGroup>
+			<h:panelGroup id="formConfirmation" layout="block" rendered="#{operationBean.showConfirmation}">
+				<div id="confirmationTitle">
+					<h2>Confirmation</h2>	
+				</div>
+				<h:form>
 					<h:outputLabel for="opTotal" value="Assets"></h:outputLabel>
 					<h:inputText id="opTotal" value="#{operationBean.op.total}">
 						<f:convertNumber type="currency"></f:convertNumber>
@@ -90,6 +91,7 @@
 					<h:inputText id="maintenance" value="#{operationBean.oc.maintenance}">
 						<f:convertNumber type="currency"></f:convertNumber>
 					</h:inputText>
+					<br></br>
 					<h:outputLabel for="finalTotal" value="Total operation value"></h:outputLabel>
 					<h:inputText id="finalTotal" value="#{operationBean.op.totalPlusCosts}">
 						<f:convertNumber type="currency"></f:convertNumber>
@@ -97,8 +99,7 @@
 					<h:commandButton value="Confirm" action="#{operationBean.confirmAdding}"></h:commandButton>
 					<h:commandButton value="Cancel" action="#{operationBean.cancel}"></h:commandButton>
 				</h:form>
-			</div>	
-
+			</h:panelGroup>
 		</ui:define>
 	</ui:composition>	
 </html>

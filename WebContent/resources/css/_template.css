@@ -5,28 +5,22 @@ body {
 	padding: 0px;
 }
 
+/*-------------------------------------------------------------------------General----------------------------------------------------------------------*/
 input[type="submit"] {
-	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
-	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
-	background-color: #637aad;
-	border: 1px solid #314179;
-	display: inline-block;
-	cursor: pointer;
-	color: #ffffff;
-	font-family: "Verdana";
-	font-size: 20px;
-	padding: 6px 12px;
-	text-decoration: none;
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #595959;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
 input[type="submit"]:hover {
-	background-color: #5972a7;
-}
-
-input[type="submit"]:active {
-	position: relative;
-	top: 1px;
+  background: #737373;
+  text-decoration: none;
 }
 
 a:link, a:visited {
@@ -46,6 +40,28 @@ ul {
 
 ul li {
 	margin-left: 10px;
+}
+
+input[type=text], select {
+	display: block;
+	margin-left: 20px;
+	margin-top: 2px;
+	background: white;
+	border: 2px solid #595959;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #595959;
+	-webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	-moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+	padding:8px;
+	margin-bottom:8px;
+	width:280px;
+}
+
+.errorMessage {
+	color: red;
 }
 
 /*-------------------------------------------------------------------------Header-------------------------------------------------------------------------*/
@@ -72,6 +88,25 @@ ul li {
 	position: absolute;
 	right: 3%;
 	top: 25%;
+}
+
+#logoff input[type="submit"] {
+	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
+	background-color: #637aad;
+	border: 1px solid #314179;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: "Verdana";
+	font-size: 20px;
+	padding: 6px 12px;
+	text-decoration: none;
+}
+
+#logoff input[type="submit"]:hover {
+	background-color: #5972a7;
 }
 
 /*-----------------------------------------------------------------------Sub-Body-------------------------------------------------------------------------*/
@@ -122,4 +157,74 @@ ul li {
 	top: 25%;
 	right: 20%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*-----------------------------------------------------------------------Add-----------------------------------------------------------------------------*/
+
+#formAdd {
+	position: absolute;
+	left: 2%;
+	top: 2%;
+	padding: 10px;
+	position: absolute;
+}
+
+#formAdd label {
+	text-shadow: #fdf2e4 0 1px 0;
+	font-size:18px;
+	margin: 0 0 10px 0;
+	font-weight:bold;
+	text-align:center;
+}
+
+#formAdd input[type="submit"] {
+	margin-left: 14%;
+}
+
+#formAdd .errorMessage {
+	color: red;
+}
+
+/*------------------------------------*/
+
+#formInfo {
+	position: absolute;
+	left: 3%;
+	top: 80%;
+	font-size: 20px;
+	padding: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #404040;
+	color: #fff;
+}
+
+/*------------------------------------*/
+
+#formConfirmation {
+	position: absolute;
+	width: 16%;
+	left: 40%;
+	top: 2%;
+	padding: 10px;
+	border: solid #404040;
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 28px;
+}
+
+#formCOnfirmation h2 {
+	text-align: center;
+}
+
+#formConfirmation label {
+	text-shadow: #fdf2e4 0 1px 0;
+	font-size:18px;
+	margin: 0 0 10px 0;
+	font-weight:bold;
+	text-align:center;
+}
+
+#formConfirmation input[type="submit"] {
+	margin-left: 10%;
+	margin-top: 5%;
 }
