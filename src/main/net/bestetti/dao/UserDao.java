@@ -81,5 +81,12 @@ public class UserDao implements Serializable{
 			return null;
 		}
 	}
+	
+	@Transactional
+	public boolean updateUser (User user) {
+		user.setLastUpdate(new Date());
+		User managedUser = em.merge(user);
+		return true;
+	}
 
 }

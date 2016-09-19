@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core">
+	  
+	<h:head>
+		<TITLE>StockOptions On-line book</TITLE>
+	</h:head>	
+	
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="content">
+			<h:panelGroup id="formChangePersonalData" layout="block">
+				<h:form>
+					<h:outputLabel for="firstName" value="First name"></h:outputLabel>
+					<h:inputText id="firstName" value="#{changeDataBean.user.firstName}" required="true" requiredMessage="Name is mandatory"></h:inputText>
+					<h:message for="firstName" class="errorMessage"></h:message>
+					<br></br>
+					<h:outputLabel for="lastName" value="Last name"></h:outputLabel>
+					<h:inputText id="lastName" value="#{changeDataBean.user.lastName}" required="true" requiredMessage="Last name is mandatory"></h:inputText>
+					<h:message for="lastName" class="errorMessage"></h:message>
+					<br></br>
+					<h:outputLabel for="email" value="Email"></h:outputLabel>
+					<h:inputText id="email" value="#{changeDataBean.user.email}" required="true" requiredMessage="Email is mandatory"></h:inputText>
+					<h:message for="email" class="errorMessage"></h:message>
+					<br></br>
+					<h:outputLabel for="taxPercentage" value="Tax %"></h:outputLabel>
+					<h:inputText id="taxPercentage" value="#{changeDataBean.user.taxPercentage}" required="true" requiredMessage="Tax % is mandatory"></h:inputText>
+					<h:message for="taxPercentage" class="errorMessage"></h:message>
+					<br></br>
+					<h:outputLabel for="ocType" value="Operation costs type"></h:outputLabel>
+					<h:selectOneMenu id="ocType" value="#{changeDataBean.user.operationCostIsPercentage}"  required="true" requiredMessage="Cost type is mandatory">
+						<f:selectItem id="menuPercentage" itemLabel="Percentage" itemValue="true"></f:selectItem>
+						<f:selectItem id="menufIXED" itemLabel="Fixed value" itemValue="false"></f:selectItem>
+					</h:selectOneMenu>
+					<h:message for="ocType" class="errorMessage"></h:message>
+					<br></br>
+					<h:outputLabel for="ocValue" value="Operation cost value (just the numbers)"></h:outputLabel>
+					<h:inputText id="ocValue" value="#{changeDataBean.operationCost}"  required="true" requiredMessage="Cost value is mandatory"></h:inputText>
+					<h:message for="ocValue" class="errorMessage"></h:message>
+					<br></br>
+					<h:commandButton value="Update" action="#{changeDataBean.userUpdate}"></h:commandButton>
+					<h:commandButton value="Cancel" action="#{operationBean.cancel}">
+						<f:ajax></f:ajax>
+					</h:commandButton>
+				</h:form>
+			</h:panelGroup>
+		</ui:define>		
+	</ui:composition>		
+</html>

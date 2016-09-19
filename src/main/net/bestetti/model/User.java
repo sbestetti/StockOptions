@@ -35,6 +35,15 @@ public class User {
 	@NotNull
 	private BigDecimal balance;
 	
+	@NotNull
+	private Double taxPercentage;
+	
+	@NotNull
+	private Double operationCost;
+	
+	@NotNull
+	private Boolean operationCostIsPercentage;
+	
 	@OneToMany (mappedBy = "user")
 	private List<Operation> operations;
 	
@@ -86,6 +95,24 @@ public class User {
 	}
 	public void setOperations(List<Operation> operations) {
 		this.operations = operations;
+	}
+	public Double getTaxPercentage() {
+		return taxPercentage;
+	}
+	public void setTaxPercentage(Double taxPercentage) {
+		this.taxPercentage = taxPercentage;
+	}
+	public Double getOperationCost() {
+		return operationCost;
+	}
+	public void setOperationCost(Double operationCost) {
+		this.operationCost = operationCost;
+	}
+	public Boolean getOperationCostIsPercentage() {
+		return operationCostIsPercentage;
+	}
+	public void setOperationCostIsPercentage(Boolean operationCostIsPercentage) {
+		this.operationCostIsPercentage = operationCostIsPercentage;
 	}	
 
 }

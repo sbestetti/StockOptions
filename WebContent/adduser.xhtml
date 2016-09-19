@@ -1,64 +1,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 	<h:head>
-		<TITLE>StockOptions On-line book - Register</TITLE>
-		<h:outputStylesheet library="css" name="/resources/css/index.css" />
+		<ui:insert name="head-meta">
+			<meta name="viewport" content="user-scalable=no, width=device-width" />	
+		</ui:insert>
+		<TITLE>StockOptions On-line book</TITLE>
 		<link rel="stylesheet" href="resources/css/index.css"/>
+		<link rel="stylesheet" href="resources/css/index_mobile.css" media="(max-width: 768px)"/>
 	</h:head>	
 	
 	<h:body>
-		<h:form>
-			<table>
-				<TR>
-					<TD>First name</TD>
-					<TD>
-						<h:inputText id="firstName" value="#{addUserBean.user.firstName}" 
-						required="true" requiredMessage="Name required"/>
-					</TD>
-					<TD><h:message for="firstName" /></TD>
-				</TR>
-				<TR>
-					<TD>Last name</TD>
-					<TD>
-						<h:inputText id="lastName" value="#{addUserBean.user.lastName}" 
-						required="true" requiredMessage="Last name required"/>
-					</TD>
-					<TD><h:message for="lastName" /></TD>
-				</TR>
-				<TR>
-					<TD>Email</TD>
-					<TD>
-						<h:inputText value="#{addUserBean.user.email}" id="email"
-						required="true" requiredMessage="Email required" />
-						<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}" />
-					</TD>
-					<TD><h:message for="email" /></TD>
-				</TR>
-				<TR>
-					<TD>Password</TD>
-					<TD>
-						<h:inputSecret value="#{addUserBean.user.password}" id="password" 
-						required="true" requiredMessage="Password required"/>
-					</TD>
-					<TD><h:message for="password" /></TD>
-				</TR>
-				<TR>
-					<TD>Confirm password</TD>
-					<TD>
-						<h:inputSecret value="#{addUserBean.passwordCheck}" id="confirmPassword"
-						required="true" requiredMessage="Password check required"/>
-						<h:outputLabel value="Password does not match" rendered="#{addUserBean.passwordMismatchMessage}" />
-					</TD>
-					<TD><h:message for="confirmPassword" /></TD>
-				</TR>
-				<TR>
-					<TD />
-					<TD>
-						<h:commandButton value="Add user" action="#{addUserBean.addUser}" />
-					</TD>
-				</TR>				
-			</table>
-		</h:form>
+		<h:panelGroup id="formNewUser" layout="block">
+			<h:form>
+				<table>
+					<tr>
+						<td>
+							<h:outputLabel for="firstName" value="First name"></h:outputLabel>
+							<h:inputText id="firstName" value="#{addUserBean.user.firstName}" required="true" requiredMessage="Name required"></h:inputText>
+							<br></br>
+							<h:outputLabel for="lastName" value="Last name"></h:outputLabel>
+							<h:inputText id="lastName" value="#{addUserBean.user.lastName}" required="true" requiredMessage="Last name required"></h:inputText>
+							<br></br>
+							<h:outputLabel for="email" value="Email"></h:outputLabel>
+							<h:inputText value="#{addUserBean.user.email}" id="email" required="true" requiredMessage="Email required"></h:inputText>
+							<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}"></h:outputLabel>
+							<br></br>
+							<h:outputLabel for="taxPercentage" value="Tax %"></h:outputLabel>
+							<h:inputText id="taxPercentage" value="#{addUserBean.user.taxPercentage}" required="true" requiredMessage="Tax % is mandatory"></h:inputText>		
+						</td>
+						<td>
+							<h:outputLabel for="ocType" value="Operation costs type"></h:outputLabel>
+							<h:selectOneMenu id="ocType" value="#{addUserBean.user.operationCostIsPercentage}"  required="true" requiredMessage="Cost type is mandatory">
+								<f:selectItem id="menuPercentage" itemLabel="Percentage" itemValue="true"></f:selectItem>
+								<f:selectItem id="menufIXED" itemLabel="Fixed value" itemValue="false"></f:selectItem>
+							</h:selectOneMenu>
+							<br></br>
+							<h:outputLabel for="ocValue" value="Operation cost value (just the numbers)"></h:outputLabel>
+							<h:inputText id="ocValue" value="#{addUserBean.user.operationCost}"  required="true" requiredMessage="Cost value is mandatory"></h:inputText>
+							<br></br>
+							<h:outputLabel for="password" value="Pasword"></h:outputLabel>
+							<h:inputSecret value="#{addUserBean.user.password}" id="password" required="true" requiredMessage="Password required"></h:inputSecret>
+							<br></br>
+							<h:outputLabel for="confirmPassword" value="Confirm password"></h:outputLabel>
+							<h:inputSecret value="#{addUserBean.passwordCheck}" id="confirmPassword" required="true" requiredMessage="Password check required"></h:inputSecret>
+							<h:outputLabel value="Password does not match" rendered="#{addUserBean.passwordMismatchMessage}"></h:outputLabel>							
+						</td>
+					</tr>
+				</table>
+				<h:commandButton value="Add user" action="#{addUserBean.addUser}"></h:commandButton>
+			</h:form>
+		</h:panelGroup>
 	</h:body>
+
 </html>
