@@ -15,7 +15,9 @@
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} 
 				{CurrentPageReport} {NextPageLink} {LastPageLink}">
 					<p:column headerText="Date">
-						<h:outputText value="#{op.created}"></h:outputText>					
+						<h:outputText value="#{op.created}">
+							<f:convertDateTime dateStyle="full"></f:convertDateTime>
+						</h:outputText>					
 					</p:column>
 					<p:column headerText="Type">
 						<h:outputText value="#{op.type}"></h:outputText>					
@@ -24,7 +26,9 @@
 						<h:outputText value="#{op.ticker}"></h:outputText>					
 					</p:column>
 					<p:column headerText="Total">
-						<h:outputText value="#{op.totalPlusCosts}"></h:outputText>					
+						<h:outputText value="#{op.totalPlusCosts}">
+							<f:convertNumber type="currency"></f:convertNumber>
+						</h:outputText>					
 					</p:column>				
 				</p:dataTable>
 			</h:panelGroup>
