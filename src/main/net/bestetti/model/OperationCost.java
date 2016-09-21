@@ -1,6 +1,7 @@
 package main.net.bestetti.model;
 
 import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;

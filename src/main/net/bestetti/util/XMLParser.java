@@ -42,7 +42,6 @@ public class XMLParser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JDOMException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	

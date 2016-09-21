@@ -11,9 +11,9 @@
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
 			<h:panelGroup id="allOperations" layout="block">
-				<p:dataTable var="op" value="#{operationBean.operations}" paginator="true" rows="10" 
-				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} 
-				{CurrentPageReport} {NextPageLink} {LastPageLink}">
+				<p:dataTable lazy="true" var="op" value="#{operationBean.dataModel}" paginator="true" rows="10" 
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+				rowsPerPageTemplate="5,10,15" paginatorPosition="bottom">
 					<p:column headerText="Date">
 						<h:outputText value="#{op.created}">
 							<f:convertDateTime dateStyle="full"></f:convertDateTime>
@@ -30,6 +30,9 @@
 							<f:convertNumber type="currency"></f:convertNumber>
 						</h:outputText>					
 					</p:column>				
+					<f:facet name="footer">
+						Number of operations: #{operationBean.resultSize}
+					</f:facet>
 				</p:dataTable>
 			</h:panelGroup>
 		</ui:define>

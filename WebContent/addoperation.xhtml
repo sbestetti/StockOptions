@@ -54,15 +54,18 @@
 			</div>		
 			<h:panelGroup id="formInfo" layout="block" rendered="#{operationBean.showInformation}">
 				<h:form id="information" >
-					<h:outputLabel value="Company: #{operationBean.infoCompany}"></h:outputLabel>
+					Company: 
+					<h:outputText value="#{operationBean.infoCompany}"></h:outputText>
 					<br></br>
-					<h:outputLabel value="Price: #{operationBean.infoPrice}">
+					Price: 
+					<h:outputText value="#{operationBean.infoPrice}">
 						<f:convertNumber type="currency"></f:convertNumber>
-					</h:outputLabel>
+					</h:outputText>
 					<br></br>
-					<h:outputLabel value="Change: #{operationBean.infoChange}">
+					Change: 
+					<h:outputText value="#{operationBean.infoChange}">
 						<f:convertNumber type="currency"></f:convertNumber>
-					</h:outputLabel>
+					</h:outputText>
 					<br></br>
 				</h:form>
 			</h:panelGroup>

@@ -3,6 +3,7 @@ package main.net.bestetti.mb;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -10,10 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
 import main.net.bestetti.util.OperationCalculator;
+import main.net.bestetti.util.OperationPaginatorDataModel;
 import main.net.bestetti.util.XMLParser;
 
 @Named @SessionScoped
@@ -29,6 +32,9 @@ public class OperationBean implements Serializable{
 	
 	@Inject
 	private OperationCalculator calculator;
+	
+	@Inject
+	private OperationPaginatorDataModel dataModel;
 	
 	private boolean showConfirmation = false;
 	private boolean showInformation = false;
@@ -157,6 +163,18 @@ public class OperationBean implements Serializable{
 
 	public void setInfoChange(Double infoChange) {
 		this.infoChange = infoChange;
+	}
+
+	public OperationPaginatorDataModel getDataModel() {
+		return dataModel;
+	}
+
+	public void setDataModel(OperationPaginatorDataModel dataModel) {
+		this.dataModel = dataModel;
+	}
+	
+	public int getResultSize() {
+		return this.dataModel.getTotalResults();
 	}
 	
 }

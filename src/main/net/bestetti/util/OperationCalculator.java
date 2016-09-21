@@ -3,9 +3,11 @@ package main.net.bestetti.util;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import main.net.bestetti.dao.OperationDao;
 import main.net.bestetti.model.Operation;
 import main.net.bestetti.model.OperationCost;
@@ -23,7 +25,6 @@ public class OperationCalculator implements Serializable{
 	private static double fee = 0.003;
 	private static double maintenance = 0.000325;
 	private OperationCost finalOC = new OperationCost();
-	
 	
 	//This method returns the Operation itself but with all it's fields calculated
 	public Operation calculateOperationTotal (Operation op) {

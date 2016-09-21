@@ -2,9 +2,11 @@ package main.net.bestetti.mb;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import main.net.bestetti.dao.UserDao;
 import main.net.bestetti.model.User;
 import main.net.bestetti.util.OperationCalculator;

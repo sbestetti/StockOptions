@@ -71,8 +71,6 @@ public class ChangeDataBean implements Serializable {
 	}
 	public void setOperationCost(Double operationCost) {
 		this.operationCost = operationCost;
-	}
-	
-	
+	}	
 
 }
