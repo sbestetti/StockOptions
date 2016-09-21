@@ -85,12 +85,13 @@ input[type=text], select {
 }
 
 #logoff input[type="submit"] {
-	position: absolute;
-	right: 3%;
-	top: 25%;
+	
 }
 
 #logoff input[type="submit"] {
+	position: absolute;
+	right: 3%;
+	top: 25%;	
 	-moz-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #7a8eb9;
 	box-shadow: inset 0px 1px 0px 0px #7a8eb9;
@@ -121,6 +122,7 @@ input[type=text], select {
 	background-image: url(../images/body_background.png);
 	background-position: right;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 /*-------------------------------------------------------------------------Footer-------------------------------------------------------------------------*/

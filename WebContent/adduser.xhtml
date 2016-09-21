@@ -15,41 +15,35 @@
 	<h:body>
 		<h:panelGroup id="formNewUser" layout="block">
 			<h:form>
-				<table>
-					<tr>
-						<td>
-							<h:outputLabel for="firstName" value="First name"></h:outputLabel>
-							<h:inputText id="firstName" value="#{addUserBean.user.firstName}" required="true" requiredMessage="Name required"></h:inputText>
-							<br></br>
-							<h:outputLabel for="lastName" value="Last name"></h:outputLabel>
-							<h:inputText id="lastName" value="#{addUserBean.user.lastName}" required="true" requiredMessage="Last name required"></h:inputText>
-							<br></br>
-							<h:outputLabel for="email" value="Email"></h:outputLabel>
-							<h:inputText value="#{addUserBean.user.email}" id="email" required="true" requiredMessage="Email required"></h:inputText>
-							<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}"></h:outputLabel>
-							<br></br>
-							<h:outputLabel for="taxPercentage" value="Tax %"></h:outputLabel>
-							<h:inputText id="taxPercentage" value="#{addUserBean.user.taxPercentage}" required="true" requiredMessage="Tax % is mandatory"></h:inputText>		
-						</td>
-						<td>
-							<h:outputLabel for="ocType" value="Operation costs type"></h:outputLabel>
-							<h:selectOneMenu id="ocType" value="#{addUserBean.user.operationCostIsPercentage}"  required="true" requiredMessage="Cost type is mandatory">
-								<f:selectItem id="menuPercentage" itemLabel="Percentage" itemValue="true"></f:selectItem>
-								<f:selectItem id="menufIXED" itemLabel="Fixed value" itemValue="false"></f:selectItem>
-							</h:selectOneMenu>
-							<br></br>
-							<h:outputLabel for="ocValue" value="Operation cost value (just the numbers)"></h:outputLabel>
-							<h:inputText id="ocValue" value="#{addUserBean.user.operationCost}"  required="true" requiredMessage="Cost value is mandatory"></h:inputText>
-							<br></br>
-							<h:outputLabel for="password" value="Pasword"></h:outputLabel>
-							<h:inputSecret value="#{addUserBean.user.password}" id="password" required="true" requiredMessage="Password required"></h:inputSecret>
-							<br></br>
-							<h:outputLabel for="confirmPassword" value="Confirm password"></h:outputLabel>
-							<h:inputSecret value="#{addUserBean.passwordCheck}" id="confirmPassword" required="true" requiredMessage="Password check required"></h:inputSecret>
-							<h:outputLabel value="Password does not match" rendered="#{addUserBean.passwordMismatchMessage}"></h:outputLabel>							
-						</td>
-					</tr>
-				</table>
+				<h:outputLabel for="firstName" value="First name"></h:outputLabel>
+				<h:inputText id="firstName" value="#{addUserBean.user.firstName}" required="true" requiredMessage="Name required"></h:inputText>
+				<br></br>
+				<h:outputLabel for="lastName" value="Last name"></h:outputLabel>
+				<h:inputText id="lastName" value="#{addUserBean.user.lastName}" required="true" requiredMessage="Last name required"></h:inputText>
+				<br></br>
+				<h:outputLabel for="email" value="Email"></h:outputLabel>
+				<h:inputText value="#{addUserBean.user.email}" id="email" required="true" requiredMessage="Email required"></h:inputText>
+				<h:outputLabel value="Email already in use" rendered="#{addUserBean.emailInUseMessage}"></h:outputLabel>
+				<br></br>
+				<h:outputLabel for="taxPercentage" value="Tax %"></h:outputLabel>
+				<h:inputText id="taxPercentage" value="#{addUserBean.user.taxPercentage}" required="true" requiredMessage="Tax % is mandatory"></h:inputText>		
+				<br></br>
+				<h:outputLabel for="ocType" value="Operation costs type"></h:outputLabel>
+				<h:selectOneMenu id="ocType" value="#{addUserBean.user.operationCostIsPercentage}"  required="true" requiredMessage="Cost type is mandatory">
+					<f:selectItem id="menuPercentage" itemLabel="Percentage" itemValue="true"></f:selectItem>
+					<f:selectItem id="menufIXED" itemLabel="Fixed value" itemValue="false"></f:selectItem>
+				</h:selectOneMenu>
+				<br></br>
+				<h:outputLabel for="ocValue" value="Operation cost value"></h:outputLabel>
+				<h:inputText id="ocValue" value="#{addUserBean.user.operationCost}"  required="true" requiredMessage="Cost value is mandatory"></h:inputText>
+				<br></br>
+				<h:outputLabel for="password" value="Pasword"></h:outputLabel>
+				<h:inputSecret value="#{addUserBean.user.password}" id="password" required="true" requiredMessage="Password required"></h:inputSecret>
+				<br></br>
+				<h:outputLabel for="confirmPassword" value="Confirm password"></h:outputLabel>
+				<h:inputSecret value="#{addUserBean.passwordCheck}" id="confirmPassword" required="true" requiredMessage="Password check required"></h:inputSecret>
+				<h:outputLabel value="Password does not match" rendered="#{addUserBean.passwordMismatchMessage}"></h:outputLabel>							
+				<br></br>
 				<h:commandButton value="Add user" action="#{addUserBean.addUser}"></h:commandButton>
 			</h:form>
 		</h:panelGroup>

@@ -34,8 +34,7 @@ input[type="submit"] {
   background: #595959;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
-  margin-left: 15%;
-  margin-top: 5%;
+  margin-left: 48px;
 }
 
 input[type="submit"]:hover {
@@ -61,6 +60,11 @@ table td:first-child {
 
 table td:last-child {
 	border-right: none;
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: underline;
 }
 
 /*-------------------------------------------------------------------------Body-----------------------------------------------------------------------*/
@@ -93,20 +97,49 @@ body {
 /*-----------------------------------------------------------------------LoginForm-------------------------------------------------------------------*/
 
 #loginForm {
+	top: 50%;
+	left: 50%;
+	display: block;
 	position: absolute;
-	padding: 5px;
-	width: 16%;
-	top: 30%;
-	left: 42%;
+	width: 306px;
+	height: 200px;
+	margin-top: -100px;
+	margin-left: -153px;	
 }
 
 #formNewUser {
+	display: block;
 	position: absolute;
-	padding: 5px;
-	width: 37%;
-	top: 20%;
-	left: 31.5%;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	margin-left: -150px;
+	height: 690px;
+	margin-top: -345px;	
 }
 
 #formNewUser input[type="submit"] {
-	margin-left: 43%;
+	display: block;
+	position: absolute;
+	left: 50%;
+	width: 103px;
+	margin-left: -51.5px;		
+}
+
+#formNewUser form {
+	border: 0;
+	padding: 0;
+}
+
+.back {
+    top: 50%;
+    left: 50%;
+    display: block;
+    position: absolute;
+    background: url('http://i.imgur.com/DkNND.png') no-repeat;
+    background-size: 750px 417px;
+    width: 750px;
+    height: 417px;
+    margin-top: -208.5px; /* HALF OF THE HEIGHT */
+    margin-left: -375px; /* HALF OF THE WIDTH */
+}

@@ -12,31 +12,29 @@
 		<link rel="stylesheet" href="resources/css/index_mobile.css" media="(max-width: 768px)"/>
 	</h:head>	
 
-	<h:body>
-		
+	<h:body>		
 		<div id="info">
 			<p>
 				<strong>Sample user:</strong> sample@user.com / password - 123
+				<br></br>
+				The source for this website is available @ <a href="https://github.com/sbestetti/StockOptions" target="_blank">GitHub</a>
 			</p>
-		</div>
-		
-		<div id="loginForm">
-			<h:form>
+		</div>		
+		<h:form>
+			<div id="loginForm">
 				<h:outputLabel for="email" value="Email"></h:outputLabel>
 				<h:inputText id="email" value="#{loginBean.email}"></h:inputText>
 				<br></br>
 				<h:outputLabel for="password" value="Password"></h:outputLabel>
 				<h:inputSecret id="password" value="#{loginBean.password}"></h:inputSecret>
 				<h:outputLabel value="Email or Password inccorect" rendered="#{loginBean.showErrorMessages}"></h:outputLabel>
-				<div id="buttons">
-					<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
-					<h:commandButton value="Signup" action="/adduser.xhtml"></h:commandButton>
-				</div>
+				<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
+				<h:commandButton value="Signup" action="/adduser.xhtml"></h:commandButton>
 				<div id="messages">
 					<h:commandLink value="Reset password" rendered="#{loginBean.showErrorMessages}"></h:commandLink>
 				</div>
-			</h:form>
-		</div>
+			</div>			
+		</h:form>
 	</h:body>
 
 </html>
