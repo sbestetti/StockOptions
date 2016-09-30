@@ -11,6 +11,7 @@ Password: 123
   - HTML
   - CSS
   - XML
+  - JSON
 - IDE
   - Eclipse
   - Sublime
@@ -22,6 +23,7 @@ Password: 123
   - EJB
   - CDI
   - WebService
+  - RESTful API
 - Server
   - Wildfly 10
 - Infrastructure
