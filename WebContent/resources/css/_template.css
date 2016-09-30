@@ -60,6 +60,10 @@ input[type=text], select {
 	width:280px;
 }
 
+input[type=text]:disabled {
+	background-color: #ffffe6;
+}
+
 .errorMessage {
 	color: red;
 }
@@ -82,10 +86,6 @@ input[type=text], select {
 	font-size: 25px;
 	width: 80%;
 	height: 100%;
-}
-
-#logoff input[type="submit"] {
-	
 }
 
 #logoff input[type="submit"] {
@@ -204,9 +204,10 @@ input[type=text], select {
 
 #formConfirmation {
 	position: absolute;
-	width: 16%;
-	left: 40%;
-	top: 2%;
+	width: 326px;
+	height: 583.81px;
+	left: 54%;
+	top: 2.5%;
 	padding: 10px;
 	border: solid #404040;
 	-webkit-border-radius: 28;

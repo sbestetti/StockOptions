@@ -15,5 +15,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jdom-2.0.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/primefaces-6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/resteasy-jackson-provider-3.0.19.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-core-2.8.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-jaxrs-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-xc-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.9.13.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

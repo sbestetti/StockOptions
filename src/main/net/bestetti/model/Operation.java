@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Operation {
 	
@@ -18,6 +21,7 @@ public class Operation {
 	private Long id;
 	
 	@ManyToOne
+	@JsonBackReference
 	private User user;
 	
 	@OneToOne (fetch = FetchType.EAGER)
@@ -38,9 +42,11 @@ public class Operation {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@JsonIgnore
 	public User getUser() {
 		return user;
 	}
+	@JsonIgnore
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -80,6 +86,7 @@ public class Operation {
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+	@JsonIgnore
 	public OperationCost getOc() {
 		return oc;
 	}

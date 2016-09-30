@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -71,6 +72,17 @@ public class OperationDao implements Serializable{
 		criteriaQuery.setFirstResult(first);
 		criteriaQuery.setMaxResults(pageSize);
 		return criteriaQuery.getResultList();
+	}
+	
+	public Operation getOperationById(Long id) {
+		String jpql = "SELECT o FROM Operation o where id = :pid";
+		TypedQuery<Operation> query = em.createQuery(jpql, Operation.class);
+		query.setParameter("pid", id);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}		
 	}
 
 }

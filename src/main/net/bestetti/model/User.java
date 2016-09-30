@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 public class User {
 	
@@ -46,6 +48,7 @@ public class User {
 	private Boolean operationCostIsPercentage;
 	
 	@OneToMany (mappedBy = "user")
+	@JsonManagedReference
 	private List<Operation> operations;
 	
 	//Getters & Setters

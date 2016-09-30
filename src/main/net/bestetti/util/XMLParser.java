@@ -38,11 +38,11 @@ public class XMLParser {
 			this.lastPrice = Double.parseDouble(doc.getRootElement().getChild("LastPrice").getText());
 			this.change = Double.parseDouble(doc.getRootElement().getChild("Change").getText());
 		} catch (MalformedURLException e) {
-			e.printStackTrace();
+			System.out.println("XML Parser error: Malformed URL Exception");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("XML Parser error: IO Exception");
 		} catch (JDOMException e) {
-			e.printStackTrace();
+			System.out.println("XML Parser error: JDOM exception");
 		}
 	
 	}
